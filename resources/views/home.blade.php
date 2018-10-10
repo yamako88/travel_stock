@@ -2,7 +2,15 @@
 
 @section('content')
 
-<main role="main">
+<main role="main" class="container">
+
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+        <img class="mr-3" src="./list_bootstrap_sample_files/bootstrap-outline.svg" alt="" width="48" height="48">
+        <div class="lh-100">
+            <h4 class="mb-0 text-white lh-100">ホーム</h4>
+            {{--<small>登録した旅程一覧</small>--}}
+        </div>
+    </div>
 
 
     <div class="album py-5 bg-light">

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UserUpdate;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -34,5 +35,24 @@ class HomeController extends Controller
     public function list()
     {
         return view('list');
+    }
+
+    public function useredit()
+    {
+        $user = Auth::user();
+        return view('userupdate', ['user' => $user]);
+    }
+
+    public function userupdate(UserUpdate $request)
+    {
+        $users = Auth::user();
+
+        $users->name = $request->name;
+        $users->email = $request->email;
+        $users->password = bcrypt($request->password);
+        $users->save();
+
+        return redirect('home');
+
     }
 }

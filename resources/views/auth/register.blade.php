@@ -94,6 +94,7 @@
     <link href="./login_bootstrap_sample_files/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <link href="./index_bootstrap_sanple_files/album.css" rel="stylesheet">
     <link href="./login_bootstrap_sample_files/signin.css" rel="stylesheet">
 </head>
 
@@ -103,25 +104,28 @@
     {{--<img class="mb-4" src="./login_bootstrap_sample_files/bootstrap-solid.svg" alt="" width="72" height="72">--}}
     <h1 class="h3 mb-3 font-weight-normal">新規登録</h1>
     <label for="name" class="sr-only">ユーザー名</label>
-    <input type="text" name="name" id="inputEmail" class="form-control" placeholder="ユーザー名" required="" autofocus="">
+    <input type="text" name="name" id="inputEmail" class="form-control" placeholder="ユーザー名" autofocus="">
     <label for="inputEmail" class="sr-only">メールアドレス</label>
-    <input type="email" name="email" id="inputEmail" class="form-control border-ra" placeholder="メールアドレス" required="" autofocus="">
+    <input name="email" id="inputEmail" class="form-control border-ra" placeholder="メールアドレス" autofocus="">
     <label for="inputPassword" class="sr-only">パスワード</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="パスワード" required="">
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="パスワード">
     @if ($errors->has('name'))
         <span class="help-block">
             <strong>{{ $errors->first('name') }}</strong>
         </span>
+        <br>
     @endif
     @if ($errors->has('email'))
         <span class="help-block">
             <strong>{{ $errors->first('email') }}</strong>
         </span>
+        <br>
     @endif
     @if ($errors->has('password'))
         <span class="help-block">
             <strong>{{ $errors->first('password') }}</strong>
         </span>
+        <br>
     @endif
     <button class="btn btn-lg btn-primary btn-block" type="submit">新規登録</button>
     <p class="in-up"><a href="{{ route('login') }}" class="in-up">ログインする</a></p>
