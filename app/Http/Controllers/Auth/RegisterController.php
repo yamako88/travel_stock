@@ -50,7 +50,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:6|confirmed',
         ],[
             'name.required' => 'ユーザー名を入力してください',
             'name.unique' => '同じユーザー名が存在しています',
@@ -59,6 +59,7 @@ class RegisterController extends Controller
             'email.unique' => '同じメールアドレスが存在しています',
             'password.required' => 'パスワードを入力してください',
             'password.min' => 'パスワードを6文字以上入力してください',
+            'password.confirmed' => 'パスワードが一致しません。入力し直してください。',
         ]);
     }
 

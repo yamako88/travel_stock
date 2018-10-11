@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get(/**
+ * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+ */
+    '/', function () {
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -23,6 +26,6 @@ Route::get('/index', 'HomeController@mypage');
 
 Route::get('/list', 'HomeController@list');
 
-Route::get('/useredit', 'HomeController@useredit');
+Route::get('/useredit', 'HomeController@userEdit');
 
-Route::post('/userupdate', 'HomeController@userupdate');
+Route::post('/userupdate', 'HomeController@userUpdate');

@@ -94,7 +94,6 @@
     <link href="./login_bootstrap_sample_files/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="./index_bootstrap_sanple_files/album.css" rel="stylesheet">
     <link href="./login_bootstrap_sample_files/signin.css" rel="stylesheet">
 </head>
 
@@ -107,8 +106,10 @@
     <input type="text" name="name" id="inputEmail" class="form-control" placeholder="ユーザー名" autofocus="">
     <label for="inputEmail" class="sr-only">メールアドレス</label>
     <input name="email" id="inputEmail" class="form-control border-ra" placeholder="メールアドレス" autofocus="">
+    <label for="inputEmail" class="sr-only">パスワード</label>
+    <input type="password" name="password" id="inputPassword" class="form-control border-ra pass-ra" placeholder="パスワード" autofocus="">
     <label for="inputPassword" class="sr-only">パスワード</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="パスワード">
+    <input type="password" name="password_confirmation" id="inputPassword" class="form-control" placeholder="パスワードの確認">
     @if ($errors->has('name'))
         <span class="help-block">
             <strong>{{ $errors->first('name') }}</strong>
@@ -125,6 +126,7 @@
         <span class="help-block">
             <strong>{{ $errors->first('password') }}</strong>
         </span>
+        <br>
         <br>
     @endif
     <button class="btn btn-lg btn-primary btn-block" type="submit">新規登録</button>

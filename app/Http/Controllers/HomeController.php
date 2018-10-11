@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserUpdate;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class HomeController
+ * @package App\Http\Controllers
+ */
 class HomeController extends Controller
 {
     /**
@@ -27,23 +31,36 @@ class HomeController extends Controller
         return view('home');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function mypage()
     {
         return view('index');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function list()
     {
         return view('list');
     }
 
-    public function useredit()
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function userEdit()
     {
         $user = Auth::user();
         return view('userupdate', ['user' => $user]);
     }
 
-    public function userupdate(UserUpdate $request)
+    /**
+     * @param UserUpdate $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function userUpdate(UserUpdate $request)
     {
         $users = Auth::user();
 

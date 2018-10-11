@@ -86,7 +86,6 @@
     <link href="./login_bootstrap_sample_files/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="./index_bootstrap_sanple_files/album.css" rel="stylesheet">
     <link href="./login_bootstrap_sample_files/signin.css" rel="stylesheet">
 </head>
 

@@ -25,6 +25,8 @@
             <input name="email" id="inputEmail" class="form-control border-ra" placeholder="メールアドレス" autofocus="" value="{{ $user->email }}">
             <label for="inputPassword" class="sr-only-">パスワード (6文字以上)</label>
             <input type="password" name="password" id="inputPassword" class="form-control" placeholder="パスワードを入力してください">
+                <label for="inputPassword" class="sr-only-">パスワードの確認</label>
+                <input type="password" name="password_confirmation" id="inputPassword" class="form-control" placeholder="パスワードを入力してください">
             @if ($errors->has('name'))
                 <span class="help-block">
             <strong class="error-color">{{ $errors->first('name') }}</strong>

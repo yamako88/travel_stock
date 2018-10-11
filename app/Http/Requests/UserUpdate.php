@@ -5,6 +5,10 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class UserUpdate
+ * @package App\Http\Requests
+ */
 class UserUpdate extends FormRequest
 {
     /**
@@ -28,10 +32,13 @@ class UserUpdate extends FormRequest
         return [
             'name' => 'required|string|max:255|unique:users,name,'.$users->id.',id',
             'email' => 'required|string|email|max:255|unique:users,email,'.$users->id.',id',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:6|confirmed',
         ];
     }
 
+    /**
+     * @return array
+     */
     public function messages()
     {
         return [
@@ -42,6 +49,7 @@ class UserUpdate extends FormRequest
             'email.unique' => '同じメールアドレスが存在しています',
             'password.required' => 'パスワードを入力してください',
             'password.min' => '6文字以上入力してください',
+            'password.confirmed' => 'パスワードが一致しません。入力し直してください。',
         ];
     }
 }
