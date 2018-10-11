@@ -11,9 +11,7 @@
 |
 */
 
-Route::get(/**
- * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
- */
+Route::get(
     '/', function () {
     return view('auth.login');
 });
