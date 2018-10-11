@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get(
+    '/', function () {
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -22,3 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/index', 'HomeController@mypage');
 
 Route::get('/list', 'HomeController@list');
+
+Route::get('/useredit', 'HomeController@userEdit');
+
+Route::post('/userupdate', 'HomeController@userUpdate');

@@ -10,6 +10,12 @@
     <title>Offcanvas template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
+    <link href="./login_bootstrap_sample_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    {{--<link href="./login_bootstrap_sample_files/signin.css" rel="stylesheet">--}}
+
+    <!-- Bootstrap core CSS -->
     <link href="./list_bootstrap_sample_files/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -25,7 +31,7 @@
 <body class="bg-light">
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-    <a class="navbar-brand mr-auto mr-lg-0" href="#">旅程ストック</a>
+    <a class="navbar-brand mr-auto mr-lg-0" href="home">旅程ストック</a>
     <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,7 +39,7 @@
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">ホーム <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="home">ホーム <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="#">旅程検索</a>
@@ -48,7 +54,10 @@
                 <a class="nav-link" href="#">管理画面</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">登録情報変更</a>
+                <a class="nav-link" href="useredit">登録情報変更</a>
+            </li>
+            <li class="nav-item">
+                <a>ようこそ、{{ Auth::user()->name }}さん</a>
             </li>
 
         </ul>

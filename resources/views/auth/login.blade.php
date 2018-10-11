@@ -95,18 +95,20 @@
     {{--<img class="mb-4" src="./login_bootstrap_sample_files/bootstrap-solid.svg" alt="" width="72" height="72">--}}
     <h1 class="h3 mb-3 font-weight-normal">ログイン</h1>
     <label for="inputEmail" class="sr-only">メールアドレス</label>
-    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="メールアドレス" required="" autofocus="">
+    <input name="email" id="inputEmail" class="form-control" placeholder="メールアドレス" autofocus="">
     <label for="inputPassword" class="sr-only">パスワード</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="パスワード" required="">
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="パスワード">
     @if ($errors->has('email'))
         <span class="help-block">
             <strong>{{ $errors->first('email') }}</strong>
         </span>
+        <br>
     @endif
     @if ($errors->has('password'))
         <span class="help-block">
             <strong>{{ $errors->first('password') }}</strong>
         </span>
+        <br>
     @endif
     <div class="checkbox mb-3">
         <label class="remember-me">
