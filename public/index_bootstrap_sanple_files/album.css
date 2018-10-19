@@ -66,11 +66,11 @@ footer p {
 }
 
 .col-md-4:hover {
-  filter:alpha(opacity=70);/* IE 6,7*/
-  -ms-filter: "alpha(opacity=70)";/* IE 8,9 */
-  -moz-opacity:0.7;/* FF , Netscape */
+  filter:alpha(opacity=70);
+  -ms-filter: "alpha(opacity=70)";
+  -moz-opacity:0.7;
   opacity:0.7;
-  zoom:1;/*IE*/
+  zoom:1;
 }
 
 .btn-public {
@@ -91,6 +91,13 @@ footer p {
 
 .form-control {
   margin-bottom: 20px;
+  margin-right: 10px;
+  margin-top: 13px;
+}
+
+.form-control1 {
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .btn-block {
@@ -101,6 +108,215 @@ footer p {
 strong {
   color: red;
 }
+
+.btn-add{
+  display: inline-block;
+  text-decoration: none;
+  background: white;
+  color: #FFF;
+  width: 80px !important;
+  height: 80px !important;
+  line-height: 86px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  vertical-align: middle;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px white;
+  transition: .4s;
+  font-size: 50px;
+  text-indent: 0px !important;
+  margin: 0 auto;
+  position: static !important;
+  text-decoration: none !important;
+}
+
+.btn-add:hover {
+  filter:alpha(opacity=70);
+  -ms-filter: "alpha(opacity=70)";
+  -moz-opacity:0.7;
+  opacity:0.7;
+  zoom:1;
+}
+
+.btn-add:active{
+  -ms-transform: translateY(2px);
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.post-add {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.pt-3 h7{
+  margin-right: 10px;
+}
+
+.pt-3 strong{
+  color: #6c757d;
+}
+
+.logo-img {
+  margin-left: 10px;
+}
+
+.text-gray-dark a{
+  margin-left: 10px;
+}
+
+.d-flex a{
+  text-align: right;
+}
+
+.square_btn {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #fd9535;
+  border-bottom: solid 2px #d27d00;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+  text-align: center;
+}
+
+.square_btn:active {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+.one-add {
+  text-align: center;
+}
+
+.plan-create {
+  margin-top: 50px;
+  width: 30%;
+}
+
+.choice-btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  margin: 0 6px;
+  font-size: 30px;
+}
+
+.choice-btn:hover {
+  background: #67c5ff;
+  color: white;
+  text-decoration: none;
+}
+
+.icon-category {
+  color: #67c5ff;
+  font-size: 30px;
+  margin-right: 15px;
+}
+
+.time-select {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.time-hour {
+  width: 60px;
+  float: left;
+}
+
+.time-cut {
+  float: left;
+  padding: 0 5px;
+}
+
+.modal-body {
+  margin: 30px auto 0 auto;
+}
+
+.square-btn-back{
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #00BCD4;
+  background: #ECECEC;
+  transition: .4s;
+  margin-right: 15px;
+}
+
+.square-btn-back:hover {
+  background: #00bcd4;
+  color: white;
+}
+
+.square-btn-move {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #67c5ff;
+  background: #ECECEC;
+  border-radius: 3px;
+  transition: .4s;
+  font-size: 26px;
+  margin: 0 5px;
+}
+
+.square-btn-move:hover {
+  background: #d0d0d0;
+  text-decoration: none;
+}
+
+.means {
+  background: #d0d0d0;
+  text-decoration: none;
+  color: #0056b3;
+}
+
+.form-inline {
+  margin: 0 auto;
+}
+
+.tab_delete_btn {
+  top: -4px;
+  right: 5px;
+  font-weight: bold;
+  padding: 1px;
+  background: #765946;
+  color: #eee;
+  border-radius: 50px;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -ms-filter: "alpha(opacity=100)";
+  text-shadow: none;
+  position: absolute;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.not-del {
+  position: static;
+}
+
+.count1:before {
+  counter-increment:count;
+  content:counter(count);
+}
+ul {counter-reset:count;}
 
 @media (max-width: 991.98px) {
   .offcanvas-collapse {

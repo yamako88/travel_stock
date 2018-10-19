@@ -27,3 +27,5 @@ Route::get('/list', 'HomeController@list');
 Route::get('/useredit', 'HomeController@userEdit');
 
 Route::post('/userupdate', 'HomeController@userUpdate');
+
+Route::get('/post', 'PostController@post');
