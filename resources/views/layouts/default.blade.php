@@ -30,7 +30,7 @@
     <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body class="bg-light" onload="load()">
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <a class="navbar-brand mr-auto mr-lg-0" href="home">旅程ストック</a>
