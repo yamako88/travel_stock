@@ -98,30 +98,6 @@ function hyoji1(num)
 }
 
 
-
-// 交通手段の選択
-let btns = document.getElementsByClassName('square-btn-move');
-
-for (let im = btns.length - 1; im >= 0; im--) {
-    btnAction(btns[im],im);
-    }
-
-function btnAction(btnDOM,btnId){
-    btnDOM.addEventListener("click", function(){
-        this.classList.toggle('means');
-        for (let im = btns.length - 1; im >= 0; im--) {
-            if(btnId !== im){
-                if(btns[im].classList.contains('means')){
-                    btns[im].classList.remove('means');
-                }
-            }
-        }
-    })
-}
-
-
-
-
 // idのインクリメント
 //複数のdiv要素に動的なidをつける
 let moji = "#home";
@@ -146,7 +122,7 @@ function firstdate() {
             $('.nav-tabs :nth-last-child(2)').after('<li class="nav-item">\n' +
                 '                        <a class="nav-link lists" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false">' + nissuu +'日目</a>\n' +
                 '                    </li>');
-            $('.nav-tabs :nth-last-child(2)').append('<a href="#" class="tab_delete_btn" id="tab_delete_btn" style="display: block;" onclick="deldate()">×</a>');
+            $('.nav-tabs :nth-last-child(2)').append('<a href="#" class="tab_delete_btn" id="tab_delete_btn" style="display: block;" onclick="deleteDate()">×</a>');
 
             $(tmp[tmp.length-1]).attr('href', moji+tmp.length);
             $(tmp[tmp.length-1]).attr('id', "home"+tmp.length+"-tab");
@@ -166,19 +142,17 @@ function firstdate() {
 
 
 // 日数の削除
-function deldate() {
+function deleteDate() {
     let delday = '#home'+tmp.length;
     if (tmp.length == 1) {
         $('.nav-tabs :nth-last-child(2)').remove();
-        $('.nav-tabs :nth-last-child(2)').append('<a href="#" class="tab_delete_btn" id="tab_delete_btn" style="display: block;" onclick="deldate()">×</a>');
+        $('.nav-tabs :nth-last-child(2)').append('<a href="#" class="tab_delete_btn" id="tab_delete_btn" style="display: block;" onclick="deleteDate()">×</a>');
     }else{
         $('.nav-tabs :nth-last-child(2)').remove();
         $(delday).remove();
-        $('.nav-tabs :nth-last-child(2)').append('<a href="#" class="tab_delete_btn" id="tab_delete_btn" style="display: block;" onclick="deldate()">×</a>');
+        $('.nav-tabs :nth-last-child(2)').append('<a href="#" class="tab_delete_btn" id="tab_delete_btn" style="display: block;" onclick="deleteDate()">×</a>');
     }
 }
-
-
 
 
 // ローカルストレージに日数を保存
