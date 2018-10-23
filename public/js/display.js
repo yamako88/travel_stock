@@ -100,24 +100,27 @@ function hyoji1(num)
 
 
 // 交通手段の選択
-var btn = document.getElementsByClassName('square-btn-move');
+let btns = document.getElementsByClassName('square-btn-move');
 
-for (var i = btn.length - 1; i >= 0; i--) {
-    btnAction(btn[i],i);
+for (let im = btns.length - 1; im >= 0; im--) {
+    btnAction(btns[im],im);
     }
 
 function btnAction(btnDOM,btnId){
     btnDOM.addEventListener("click", function(){
         this.classList.toggle('means');
-        for (var i = btn.length - 1; i >= 0; i--) {
-            if(btnId !== i){
-                if(btn[i].classList.contains('means')){
-                    btn[i].classList.remove('means');
+        for (let im = btns.length - 1; im >= 0; im--) {
+            if(btnId !== im){
+                if(btns[im].classList.contains('means')){
+                    btns[im].classList.remove('means');
                 }
             }
         }
     })
 }
+
+
+
 
 // idのインクリメント
 //複数のdiv要素に動的なidをつける
@@ -125,7 +128,7 @@ let moji = "#home";
 let tmp = document.getElementsByClassName("lists");
 
 let moji1 = "home";
-let tab = "-tab"
+let tab = "-tab";
 let tmp1 = document.getElementsByClassName("tab-day");
 
 // 1日目の表示
@@ -176,6 +179,8 @@ function deldate() {
 }
 
 
+
+
 // ローカルストレージに日数を保存
     if (localStorage.getItem('myTab')){
         $('#myTab')[0].innerHTML = localStorage.getItem('myTab');
@@ -193,41 +198,8 @@ $(function() {
 });
 
 
-//     // 自由に入力の保存
-// $(function() {
-//     let i = 0;
-//     $('#free-save').click(function() {
-//         // let i = 0;
-//         if (i >= 0){
-//             i = i + 1;
-//             let freesave = {
-//                 text: $('#free-str').val(),
-//                 first_hour: $('[name=number1]').val(),
-//                 first_minute: $('[name=number2]').val(),
-//                 finish_hour: $('[name=number3]').val(),
-//                 finish_minute: $('[name=number4]').val(),
-//             };
-//
-//             localStorage.setItem('freesave'+i, JSON.stringify(freesave));
-//             console.dir(JSON.parse(localStorage.getItem('freesave'+i)));
-//
-//             // localStorage.setItem('free-str'+i, text.val());
-//             // console.log(localStorage.getItem('free-str'));
-//             // freesave['text'] = "";
-//             $('#free-str').val("");
-//         }
-//     });
-// });
 
-
-
-
-
-
-
-
-
-let a = new Array();
+let arr = new Array();
 
 // HTML文章の読み込み完了時に実行（※１）
 function load() {
@@ -235,9 +207,9 @@ function load() {
     let ls = localStorage.getItem("yotei");
     if(ls != null){
         // 読み出した値をJSON.parseして配列に代入
-        a = JSON.parse(ls);
+        arr = JSON.parse(ls);
     } else {
-        a = [];
+        arr = [];
     }
     show();
 }
@@ -248,9 +220,9 @@ function input() {
     if(document.getElementById("free-str").value == "") {
         alert("入力値が空白です");
     } else {
-        a.push({"first_hour" : document.getElementById("number1").value,
+        arr.push({
+            "first_hour" : document.getElementById("number1").value,
             "text" : document.getElementById("free-str").value,
-
                 "first_minute": document.getElementById("number2").value,
                 "finish_hour" : document.getElementById("number3").value,
                 "finish_minute": document.getElementById("number4").value});
@@ -260,88 +232,92 @@ function input() {
 }
 
 
-// // 「削除」ボタンがクリックされたら実行（※６）
-// function deleteValue(x) {
-//     a.splice(x, 1);
-//     save();
-// }
-//
+// 「削除」ボタンがクリックされたら実行（※６）
+function deleteValue(x) {
+    arr.splice(x, 1);
+    save();
+}
+
 // 配列aの要素を昇順に並べてテーブル形式で画面に表示（※３）
 function show() {
-    console.log('hogehoge');
 
-
-
-
-    let s = '<div class="media text-muted pt-3">\n' +
-        '                                <div class="small">\n' +
-        '                                <div>\n' +
-        '                                    <strong class="time-time"></strong>\n' +
-        '                                </div>\n' +
-        '                                </div>\n' +
-        '                                <div class="media-body pb-3 border-bottom">\n' +
-        '                                    <div class="d-flex justify-content-between">\n' +
-        '                                        <strong class="text-gray-dark"><i class="far fa-star"></i></strong>\n' +
-        '                                        <div class="update-del">\n' +
-        '                                        <a href="#">時間変更</a>\n' +
-        '                                        <a href="#">削除</a>\n' +
-        '                                        </div>\n' +
-        '                                    </div>\n' +
-        '                                </div>\n' +
-        '                            </div>\n' +
-        '                            <div class="text-muted">\n' +
-        '                                <h5>↓</h5>\n' +
-        '                            </div>';
+    let s = '';
     sorting();
 
-    for (let i = 0; i < a.length; i++) {
-        s += '<div class="media text-muted pt-3">\n' +
+    for (let i = 0; i < arr.length; i++) {
+
+        let year = 2018;
+        let month = 08;
+        let day = 31;
+        let firsthour = arr[i]['first_hour'];
+        let firstminute = arr[i]['first_minute'];
+        let finishhour = arr[i]['finish_hour'];
+        let finishminute = arr[i]['finish_minute'];
+
+        let firstdt = new Date( year, month, day, firsthour, firstminute );
+        let finishdt = new Date( year, month, day, finishhour, finishminute );
+
+        let outHour = firstdt.getHours();
+        let outMinute = firstdt.getMinutes();
+        let autHour = finishdt.getHours();
+        let autMinute = finishdt.getMinutes();
+
+        outHour = ('0' + outHour).slice(-2);
+        outMinute = ('0' + outMinute).slice(-2);
+        autHour = ('0' + autHour).slice(-2);
+        autMinute = ('0' + autMinute).slice(-2);
+
+        // datetime型
+
+        if (i>0){
+        s +='<div class="text-muted">\n' +
+            '                                <h5>↓</h5>\n' +
+            '                            </div>\n';
+        }
+        s +='<div class="media text-muted pt-3">\n' +
             '                                <div class="small">\n' +
             '                                <div>\n' +
-            '                                    <strong class="time-time">' + a[i]['first_hour'] + ':' + a[i]['first_minute'] + ' - ' + a[i]['finish_hour'] + ':' + a[i]['finish_minute'] + '</strong>\n' +
+            '                                    <strong class="time-time">' + outHour + ':' + outMinute + ' - ' + autHour + ':' + autMinute + '</strong>\n' +
             '</div>\n' +
             '                                </div>\n' +
             '                                <div class="media-body pb-3 border-bottom">\n' +
             '                                    <div class="d-flex justify-content-between">\n' +
-            '                                        <strong class="text-gray-dark"><i class="far fa-star"></i>' + a[i]['text'] + '</strong>\n' +
+            '                                        <strong class="text-gray-dark"><i class="far fa-star"></i>' + arr[i]['text'] + '</strong>\n' +
             '                                        <div class="update-del">\n' +
-            '                                        <a href="#">時間変更</a>\n' +
-            '                                        <a href="#">削除</a>\n' +
+            // '                                        <button type="button" onclick="deleteValue(\' + i + \')">編集</button>\n' +
+            '                                        <button type="button" onclick="deleteValue(' + i + ')">削除</button>\n' +
             '                                        </div>\n' +
             '                                    </div>\n' +
             '                                </div>\n' +
             '                            </div>';
-        console.log(a[i]['first_hour']);
-        // console.log(a[i]['finish_hour']);
-        for(let p in a[i]) {
-            s += '<td>' + a[i][p] + '</td>';
-        }
-
-        s += '<td><button type="button" onclick="deleteValue(' + i + ')">削除</button></td>';
-        s += '</tr>';
-
     }
 
-    s += '</table>';
-    document.getElementById("output").innerHTML = s;
+    s += '<div class="pt-3 one-add">\n' +
+        '                                <button type="button" class="btn square_btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="hyoji1(0)">＋ 予定の追加</button>';
+
+    s += '</div>';
+    document.getElementById("sort-time-ryotei").innerHTML = s;
 }
 
 
-// 配列aをlocalStorageに保存した後、昇順に並べて画面に表示（※５）
+// 配列arrをlocalStorageに保存した後、昇順に並べて画面に表示（※５）
 function save() {
-    localStorage.setItem("yotei" , JSON.stringify(a));
+    localStorage.setItem("yotei" , JSON.stringify(arr));
     show();
 }
 
 // 配列の要素を昇順に並び替え（※２）
 function sorting() {
-    for(let i = 0; i < a.length; i++) {
-        a[i] = JSON.stringify(a[i]);
-        // console.log(a[i]);
+
+    arr.sort(function (a, b) {
+        return a.first_hour - b.first_hour;
+    });
+
+    for(let i = 0; i < arr.length; i++) {
+        arr[i] = JSON.stringify(arr[i]);
     }
-    a.sort();
-    for(i = 0; i < a.length; i++) {
-        a[i] = JSON.parse(a[i]);
-        // console.log(a[i]);
+
+    for(i = 0; i < arr.length; i++) {
+        arr[i] = JSON.parse(arr[i]);
     }
 }
