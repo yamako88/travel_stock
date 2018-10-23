@@ -232,6 +232,11 @@ strong {
 .time-hour {
   width: 60px;
   float: left;
+  list-style-type: decimal-leading-zero;
+}
+
+.time-hour option{
+  list-style-type: decimal-leading-zero;
 }
 
 .time-cut {
@@ -312,15 +317,21 @@ strong {
   position: static;
 }
 
-.count1:before {
-  counter-increment:count;
-  content:counter(count);
+.fa-star {
+  margin: 0 10px;
+  font-size: 24px;
+  color: #67c5ff;
+  background-color: #005cbf;
+  padding-top: 4px;
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  border-radius: 5px;
 }
-ul {counter-reset:count;}
 
 @media (max-width: 991.98px) {
   .offcanvas-collapse {
-    background-color: #C7865C;
+    background-color: #1f648b;
   }
 
   .nav-logout {
