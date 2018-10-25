@@ -28,6 +28,7 @@
     <link href="./index_bootstrap_sanple_files/album.css" rel="stylesheet">
 
     <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet">
+
 </head>
 
 <body class="bg-light" onload="load()">

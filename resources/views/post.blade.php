@@ -55,7 +55,9 @@
 
                             <div class="pt-3 one-add">
                                 {{--モーダル表示 1日目 開始--}}
-                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <section id="modalArea" class="modalArea">
+                                    <div id="modalBg" class="modalBg"></div>
+                                <div data-backdrop="false" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modal">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
 
@@ -69,7 +71,7 @@
                                                 <h5 class="modal-title" id="food">食べる場所を探す</h5>
                                                 <h5 class="modal-title" id="stay">泊まる場所を探す</h5>
                                                 <h5 class="modal-title" id="move">移動の情報を追加する</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <button id="closeModal" class="closeModal close" type="button" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -93,9 +95,13 @@
                                                     <div class="form-inline">
                                                         <div class="form-group">
                                                             <i class="fas fa-utensils icon-category"></i>
-                                                            <input class="form-control mr-sm-2 form-control1" type="search" size="60" maxlength="80" placeholder="例）沖縄そば" aria-label="Search">
+                                                            <input id="key" class="form-control mr-sm-2 form-control1" type="text" size="60" maxlength="80" placeholder="例）沖縄そば" aria-label="Search">
+                                                            <button id="submit" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
                                                         </div>
-                                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                                        <div id="search-word-food"></div>
+                                                        <table id="table" border="1">
+                                                        </table>
+                                                        <div id="pageing"></div>
                                                     </div>
                                                 </form>
                                             </div>
@@ -106,9 +112,13 @@
                                                     <div class="form-inline">
                                                         <div class="form-group">
                                                             <i class="fas fa-bed icon-category"></i>
-                                                            <input class="form-control mr-sm-2 form-control1" type="search" size="60" maxlength="80" placeholder="例）沖縄 那覇" aria-label="Search">
+                                                            <input id="key-stay" class="form-control mr-sm-2 form-control1" type="text" size="60" maxlength="80" placeholder="ホテル名を入力してください　例）○○ホテル" aria-label="Search">
+                                                            <button id="submit-stay" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
                                                         </div>
-                                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                                        <div id="search-word-stay"></div>
+                                                        <table id="table-stay" border="1">
+                                                        </table>
+                                                        <div id="pageing-stay"></div>
                                                     </div>
                                                 </form>
                                             </div>
@@ -117,14 +127,12 @@
                                             <div class="modal-body" id="move1">
                                                 <form>
                                                     <label for="recipient-name" class="col-form-label" style="font-size: 24px; margin-bottom: 20px;">何で移動しますか？</label>
-                                                {{--<div class="">--}}
                                                     <a href="#" class="square-btn-move means">{!! $categories[3]->font_awesome_html !!} {{ $categories[3]->name }}</a>
                                                     <a href="#" class="square-btn-move">{!! $categories[4]->font_awesome_html !!} {{ $categories[4]->name }}</a>
                                                     <a href="#" class="square-btn-move">{!! $categories[5]->font_awesome_html !!} {{ $categories[5]->name }}</a>
                                                     <a href="#" class="square-btn-move">{!! $categories[6]->font_awesome_html !!} {{ $categories[6]->name }}</a>
                                                     <a href="#" class="square-btn-move">{!! $categories[7]->font_awesome_html !!} {{ $categories[7]->name }}</a>
                                                     <a href="#" class="square-btn-move">{!! $categories[8]->font_awesome_html !!} {{ $categories[8]->name }}</a>
-                                                {{--</div>--}}
 
                                                 <div class="modal-body">
                                                         <label for="recipient-name" class="col-form-label">移動の情報を入力する（80文字まで）:</label>
@@ -167,7 +175,6 @@
                                             </div>
 
                                             <div class="modal-body" id="choice3">
-                                                {{--<form>--}}
                                                     <label for="recipient-name" class="col-form-label">自由に予定を入力する（80文字まで）:</label>
                                                     <div class="form-inline">
                                                     <div class="form-group">
@@ -177,17 +184,18 @@
                                                     </div>
                                                     <input onClick="input()" type="button" class="btn btn-primary mb-2" id="free-save" data-dismiss="modal" value="追加">
                                                     </div>
-                                                {{--</form>--}}
                                             </div>
                                             {{--最初のモーダル　終了--}}
 
                                             {{--共通モーダル　閉じるボタン--}}
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                                <button id="closeModal1" type="button" class="btn btn-secondary closeModal" data-dismiss="modal">閉じる</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                </section>
 
                                 {{--モーダル 表示 終了--}}
                             </div>
@@ -197,11 +205,8 @@
                 </div>
 
                 <button class="btn btn-lg btn-primary btn-block plan-create" type="submit">この内容で作成</button>
-
-
             </div>
         </div>
-
     </main>
 
 
