@@ -39,6 +39,7 @@ function hyoji1(num)
     }
     else if (num == 1)
     {
+        aboutTime();
         document.getElementById("choice").style.display="none";
         document.getElementById("choice1").style.display="none";
         document.getElementById("choice2").style.display="none";
@@ -49,6 +50,7 @@ function hyoji1(num)
     }
     else if (num == 2)
     {
+        aboutTime();
         document.getElementById("key").value = "";
         document.getElementById("choice").style.display="none";
         document.getElementById("choice1").style.display="none";
@@ -64,6 +66,7 @@ function hyoji1(num)
     }
     else if (num == 3)
     {
+        aboutTime();
         document.getElementById("choice").style.display="none";
         document.getElementById("choice1").style.display="none";
         document.getElementById("choice2").style.display="none";
@@ -77,6 +80,7 @@ function hyoji1(num)
     }
     else if (num == 4)
     {
+        aboutTime();
         document.getElementById("choice").style.display="none";
         document.getElementById("choice1").style.display="none";
         document.getElementById("choice2").style.display="none";
@@ -106,6 +110,17 @@ function hyoji1(num)
     }
 }
 
+// 登録時間を一時的にローカルストレージに保存
+function aboutTime() {
+    let abouttime = {
+        "about_first_hour":document.getElementById("number1").value,
+        "about_first_minute": document.getElementById("number2").value,
+        "about_finish_hour" : document.getElementById("number3").value,
+        "about_finish_minute": document.getElementById("number4").value,
+    };
+    localStorage.setItem('aboutTime', JSON.stringify(abouttime));
+}
+
 
 // idのインクリメント
 //複数のdiv要素に動的なidをつける
@@ -117,13 +132,13 @@ let tab = "-tab";
 let tmp1 = document.getElementsByClassName("tab-day");
 
 // 1日目の表示
-function firstdate() {
+function firstDate() {
         localStorage.removeItem('myTab');
         localStorage.removeItem('myTabContent');
 }
 
 // 日数の追加
-    function adddate() {
+    function addDate() {
 
         let nissuu = tmp.length+1;
 
@@ -196,6 +211,8 @@ function load() {
     }
     show();
 }
+
+
 
 // 「値を入れたらクリック」ボタンをクリック時に実行（※４）
 function input() {
@@ -338,26 +355,6 @@ function showResult(result,foodwords) {
             "                    <button id='page-modoru' type='button'><　</button><a id='page-number'>" + result.page_offset + "</a><button id='page-susumu' type='button'>　></button>\n" +
             "                </div>");
     }
-}
-
-// 食のapiの検索（ローカルホストに登録）
-function foodList(num) {
-    $('#modalArea').fadeOut();
-    let tables = document.getElementById("table");
-    let cells = tables.rows[num+1].cells[0].innerText;
-    let foodURL = tables.rows[num+1].cells[2].getElementsByTagName('a')[0].getAttribute('href');
-    arr.push({
-        "first_hour" : document.getElementById("number1").value,
-        "text" : cells + "<a href=" + foodURL +" target='_blank'>(詳細)</a>",
-        "first_minute": document.getElementById("number2").value,
-        "finish_hour" : document.getElementById("number3").value,
-        "finish_minute": document.getElementById("number4").value,
-        "icon": '<i class="fas fa-utensils icon-back"></i>'});
-    save();
-}
-
-// ページング
-$( function () {
 
     let url = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?callback=?";
     let params = {
@@ -392,6 +389,37 @@ $( function () {
         })
     });
 
+}
+
+// 食のapiの検索（ローカルホストに登録）
+function foodList(num) {
+    $('#modalArea').fadeOut();
+    let tables = document.getElementById("table");
+    let cells = tables.rows[num+1].cells[0].innerText;
+    let foodURL = tables.rows[num+1].cells[2].getElementsByTagName('a')[0].getAttribute('href');
+    let aboutTime = JSON.parse(localStorage.getItem("aboutTime"));
+    arr.push({
+        "first_hour" : aboutTime.about_first_hour,
+        "text" : cells + "<a href=" + foodURL +" target='_blank'>(詳細)</a>",
+        "first_minute": aboutTime.about_first_minute,
+        "finish_hour" : aboutTime.about_finish_hour,
+        "finish_minute": aboutTime.about_finish_minute,
+        "icon": '<i class="fas fa-utensils icon-back"></i>'});
+    save();
+}
+
+// api検索結果取得
+$( function () {
+
+    let url = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?callback=?";
+    let params = {
+        keyid: "bdf4db50503f96da1974138bb77f4863",
+        format: "json",
+        freeword: "",
+        freeword_condition: 1,
+        offset_page: "",
+    };
+
 // 検索する最初の10件取得
     $("#submit").on("click", function () {
         if($("#key").val() == "") {
@@ -409,4 +437,3 @@ $( function () {
         }
     })
 });
-

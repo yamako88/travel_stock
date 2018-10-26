@@ -35,7 +35,7 @@
                         <a class="nav-link active lists" id="home1-tab" data-toggle="tab" data-day="1" href="#home1" role="tab" aria-controls="home" aria-selected="true">1日目</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link add-date" id="contact-tab" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false" onclick="adddate()">＋</a>
+                        <a class="nav-link add-date" id="contact-tab" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false" onclick="addDate()">＋</a>
                     </li>
                 </ul>
                 <ul></ul>
