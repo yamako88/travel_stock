@@ -1,3 +1,10 @@
+// モーダルを閉じる
+$(function () {
+    $('#closeModal , #modalBg , #closeModal1 , #food-add').click(function(){
+        $('#modalArea').fadeOut();
+    });
+});
+
 // エンターキーの無効化
 $(function(){
     $("input"). keydown(function(e) {
@@ -9,12 +16,12 @@ $(function(){
     });
 });
 
-
 // モーダルの表示・非表示
 function hyoji1(num)
 {
     if (num == 0)
     {
+        $('#modalArea').fadeIn();
         document.getElementById("free-str").value = "";
         document.getElementById("choice").style.display="block";
         document.getElementById("choice1").style.display="block";
@@ -32,6 +39,7 @@ function hyoji1(num)
     }
     else if (num == 1)
     {
+        aboutTime();
         document.getElementById("choice").style.display="none";
         document.getElementById("choice1").style.display="none";
         document.getElementById("choice2").style.display="none";
@@ -42,6 +50,8 @@ function hyoji1(num)
     }
     else if (num == 2)
     {
+        aboutTime();
+        document.getElementById("key").value = "";
         document.getElementById("choice").style.display="none";
         document.getElementById("choice1").style.display="none";
         document.getElementById("choice2").style.display="none";
@@ -52,9 +62,11 @@ function hyoji1(num)
         document.getElementById("move").style.display="none";
         document.getElementById("stay").style.display="none";
         document.getElementById("modoru").style.display="block";
+        $('.food-list').remove();
     }
     else if (num == 3)
     {
+        aboutTime();
         document.getElementById("choice").style.display="none";
         document.getElementById("choice1").style.display="none";
         document.getElementById("choice2").style.display="none";
@@ -68,6 +80,7 @@ function hyoji1(num)
     }
     else if (num == 4)
     {
+        aboutTime();
         document.getElementById("choice").style.display="none";
         document.getElementById("choice1").style.display="none";
         document.getElementById("choice2").style.display="none";
@@ -97,6 +110,17 @@ function hyoji1(num)
     }
 }
 
+// 登録時間を一時的にローカルストレージに保存
+function aboutTime() {
+    let abouttime = {
+        "about_first_hour":document.getElementById("number1").value,
+        "about_first_minute": document.getElementById("number2").value,
+        "about_finish_hour" : document.getElementById("number3").value,
+        "about_finish_minute": document.getElementById("number4").value,
+    };
+    localStorage.setItem('aboutTime', JSON.stringify(abouttime));
+}
+
 
 // idのインクリメント
 //複数のdiv要素に動的なidをつける
@@ -108,13 +132,13 @@ let tab = "-tab";
 let tmp1 = document.getElementsByClassName("tab-day");
 
 // 1日目の表示
-function firstdate() {
+function firstDate() {
         localStorage.removeItem('myTab');
         localStorage.removeItem('myTabContent');
 }
 
 // 日数の追加
-    function adddate() {
+    function addDate() {
 
         let nissuu = tmp.length+1;
 
@@ -131,7 +155,7 @@ function firstdate() {
                 '                        <div class="my-3 p-3 bg-white rounded shadow-sm">\n' +
                 '                            <h6 class="border-bottom border-gray pb-2 mb-0">' + nissuu +'日目</h6>\n' +
                 '                            <div class="pt-3 one-add">\n' +
-                '                                <button type="button" class="btn square_btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="hyoji1(0)">＋ 予定の追加</button>\n' +
+                '                                <button type="button" class="btn square_btn" id="openModal" onclick="hyoji1(0)">＋ 予定の追加</button>\n' +
                 '                            </div>\n' +
                 '                        </div>\n' +
                 '                    </div>');
@@ -172,7 +196,7 @@ $(function() {
 });
 
 
-
+// 予定の追加
 let arr = new Array();
 
 // HTML文章の読み込み完了時に実行（※１）
@@ -188,6 +212,8 @@ function load() {
     show();
 }
 
+
+
 // 「値を入れたらクリック」ボタンをクリック時に実行（※４）
 function input() {
 
@@ -199,7 +225,8 @@ function input() {
             "text" : document.getElementById("free-str").value,
                 "first_minute": document.getElementById("number2").value,
                 "finish_hour" : document.getElementById("number3").value,
-                "finish_minute": document.getElementById("number4").value});
+                "finish_minute": document.getElementById("number4").value,
+                "icon": '<i class="far fa-star icon-back"></i>'});
         save();
 
     }
@@ -256,9 +283,8 @@ function show() {
             '                                </div>\n' +
             '                                <div class="media-body pb-3 border-bottom">\n' +
             '                                    <div class="d-flex justify-content-between">\n' +
-            '                                        <strong class="text-gray-dark"><i class="far fa-star"></i>' + arr[i]['text'] + '</strong>\n' +
+            '                                        <strong class="text-gray-dark">' + arr[i]['icon'] + ' ' + arr[i]['text'] + '</strong>\n' +
             '                                        <div class="update-del">\n' +
-            // '                                        <button type="button" onclick="deleteValue(\' + i + \')">編集</button>\n' +
             '                                        <button type="button" onclick="deleteValue(' + i + ')">削除</button>\n' +
             '                                        </div>\n' +
             '                                    </div>\n' +
@@ -295,3 +321,125 @@ function sorting() {
         arr[i] = JSON.parse(arr[i]);
     }
 }
+
+
+
+
+
+// 食のapiの検索
+
+// 食のapiの検索（検索結果の表示）
+function showResult(result,foodwords) {
+    if (result.total_hit_count > 0){
+    let allHit = Math.ceil(result.total_hit_count/10);
+
+    $("#search-word-food").append("<h6 class='food-list'>全" + result.total_hit_count + "件　検索ワード：<span id='foodwords'>" + foodwords + "</span></h6>");
+    $("#table").append("<tr class='food-list'><th>店舗名</th><th>住所</th><th>詳細</th><th>登録する</th>");
+    for ( let i in result.rest ) {
+        $("#table").append("<tr class='food-list'><td id='food-name" + i + "'>" + result.rest[i].name + "</td><td id='food-adress" + i + "'>" + result.rest[i].address + "</td><td><a href='" + result.rest[i].url + "' target='_blank'>詳細</a></td><td><button data-dismiss='modal' onClick='foodList(" + i + ")'>登録</button></td></tr>" );
+    }
+
+    if (result.page_offset == 1 && allHit == 1) {
+        $("#pageing").append("<div class='food-list'>\n" +
+            "                    <a id='page-number'></a>\n" +
+            "                </div>");
+    } else if (allHit == result.page_offset){
+    $("#pageing").append("<div class='food-list'>\n" +
+        "                    <button id='page-modoru' type='button'><　</button><a id='page-number'>" + result.page_offset + "</a>\n" +
+        "                </div>");
+    }else if (result.page_offset == 1){
+        $("#pageing").append("<div class='food-list'>\n" +
+            "                    <a id='page-number'>" + result.page_offset + "</a><button id='page-susumu' type='button'>　></button>\n" +
+            "                </div>");
+    }else{
+            $("#pageing").append("<div class='food-list'>\n" +
+                "                    <button id='page-modoru' type='button'><　</button><a id='page-number'>" + result.page_offset + "</a><button id='page-susumu' type='button'>　></button>\n" +
+                "                </div>");
+    }
+    }else{
+        $("#pageing").append("<div class='food-list'>\n" +
+            "            <h4 id='page-number'>該当するお店はありませんでした</h4>\n" +
+            "            </div>");
+    }
+
+    let url = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?callback=?";
+    let params = {
+        keyid: "bdf4db50503f96da1974138bb77f4863",
+        format: "json",
+        freeword: "",
+        freeword_condition: 1,
+        offset_page: "",
+    };
+
+    // ページング（戻る）
+    $("#page-modoru").on("click", function () {
+        let pageNumber = parseInt($("#page-number").text()) - parseInt(1);
+        let foodwords = $("#foodwords").text();
+        params.freeword = foodwords;
+        params.offset_page = pageNumber;
+        $(".food-list").remove();
+        $.getJSON( url, params, function( result ) {
+            showResult(result,foodwords)
+        })
+    });
+
+// ページング（進む）
+    $("#page-susumu").on("click", function () {
+        let pageNumber = parseInt($("#page-number").text()) + parseInt(1);
+        let foodwords = $("#foodwords").text();
+        params.freeword = foodwords;
+        params.offset_page = pageNumber;
+        $(".food-list").remove();
+        $.getJSON( url, params, function( result ) {
+            showResult(result,foodwords)
+        })
+    });
+
+}
+
+// 食のapiの検索（ローカルホストに登録）
+function foodList(num) {
+    $('#modalArea').fadeOut();
+    let tables = document.getElementById("table");
+    let cells = tables.rows[num+1].cells[0].innerText;
+    let foodURL = tables.rows[num+1].cells[2].getElementsByTagName('a')[0].getAttribute('href');
+    let aboutTime = JSON.parse(localStorage.getItem("aboutTime"));
+    arr.push({
+        "first_hour" : aboutTime.about_first_hour,
+        "text" : cells + "<a href=" + foodURL +" target='_blank'>(詳細)</a>",
+        "first_minute": aboutTime.about_first_minute,
+        "finish_hour" : aboutTime.about_finish_hour,
+        "finish_minute": aboutTime.about_finish_minute,
+        "icon": '<i class="fas fa-utensils icon-back"></i>'});
+    save();
+}
+
+// api検索結果取得
+$( function () {
+
+    let url = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?callback=?";
+    let params = {
+        keyid: "bdf4db50503f96da1974138bb77f4863",
+        format: "json",
+        freeword: "",
+        freeword_condition: 1,
+        offset_page: "",
+    };
+
+// 検索する最初の10件取得
+    $("#submit").on("click", function () {
+        if($("#key").val() == "") {
+            alert("入力値が空白です");
+        } else {
+            let pageNumber = 1;
+            $(".food-list").remove();
+            let words = $("#key").val();
+            let foodwords = words.replace(/\s+/g, ",");
+            params.freeword = foodwords;
+            params.offset_page = pageNumber;
+            $.getJSON(url, params, function (result) {
+                showResult(result, foodwords)
+            })
+        }
+    })
+});

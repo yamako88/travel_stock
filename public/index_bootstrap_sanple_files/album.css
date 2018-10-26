@@ -317,7 +317,7 @@ strong {
   position: static;
 }
 
-.fa-star {
+.icon-back {
   margin: 0 10px;
   font-size: 24px;
   color: #67c5ff;
@@ -328,6 +328,24 @@ strong {
   text-align: center;
   border-radius: 5px;
 }
+
+.modalArea {
+  z-index: 1040;
+  display: none;
+}
+
+.modalBg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,0.6);
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1035;
+}
+
 
 @media (max-width: 991.98px) {
   .offcanvas-collapse {
