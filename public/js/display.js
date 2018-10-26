@@ -330,6 +330,7 @@ function sorting() {
 
 // 食のapiの検索（検索結果の表示）
 function showResult(result,foodwords) {
+    if (result.total_hit_count > 0){
     let allHit = Math.ceil(result.total_hit_count/10);
 
     $("#search-word-food").append("<h6 class='food-list'>全" + result.total_hit_count + "件　検索ワード：<span id='foodwords'>" + foodwords + "</span></h6>");
@@ -351,9 +352,14 @@ function showResult(result,foodwords) {
             "                    <a id='page-number'>" + result.page_offset + "</a><button id='page-susumu' type='button'>　></button>\n" +
             "                </div>");
     }else{
+            $("#pageing").append("<div class='food-list'>\n" +
+                "                    <button id='page-modoru' type='button'><　</button><a id='page-number'>" + result.page_offset + "</a><button id='page-susumu' type='button'>　></button>\n" +
+                "                </div>");
+    }
+    }else{
         $("#pageing").append("<div class='food-list'>\n" +
-            "                    <button id='page-modoru' type='button'><　</button><a id='page-number'>" + result.page_offset + "</a><button id='page-susumu' type='button'>　></button>\n" +
-            "                </div>");
+            "            <h4 id='page-number'>該当するお店はありませんでした</h4>\n" +
+            "            </div>");
     }
 
     let url = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?callback=?";
