@@ -1,4 +1,8 @@
-@extends('layouts.default')
+@extends('layouts.change')
+
+@section('exit')
+    <a id="delete-ls" class='nav-link' href='home' style='padding: 3px 10px; margin-bottom: 3px; border: 1px solid white; border-radius: 5px;' onclick='return confirm("入力したデータは保存されません。よろしいですか？");'>旅程作成をやめる</a>
+    @endsection
 
 @section('content')
 
@@ -15,20 +19,20 @@
         <div class="album py-5 bg-light">
             <div class="container">
 
-                <form>
+                <meta name="csrf-token" content="{{ csrf_token() }}">
+                    {{ csrf_field() }}
                     <div class="form-group row">
                         <div class="col-sm-10">
-                            <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">タイトル</label>
-                            <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="例）沖縄〜グルメ旅〜">
+                            <label for="colFormLabelLg" class="col-form-label col-form-label-lg">タイトル (100文字以内)タイトル</label>
+                            <input name="title" type="text" class="form-control form-control-lg" id="title" placeholder="例）沖縄〜グルメ旅〜">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10">
-                            <label for="colFormLabel" class="col-sm-2 col-form-label">コメント</label>
-                            <textarea type="text" class="form-control" id="colFormLabel" cols="20" rows="4" placeholder="例）二日間かけて沖縄のグルメを食べ尽くそう！"></textarea>
+                            <label for="colFormLabel" class="col-form-label">コメント (400文字以内)</label>
+                            <textarea name="comment" type="text" class="form-control" id="comment" cols="20" rows="4" placeholder="例）本島を回って、沖縄のグルメを食べ尽くそう！"></textarea>
                         </div>
                     </div>
-                </form>
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item not-del">
@@ -39,6 +43,7 @@
                     </li>
                 </ul>
                 <ul></ul>
+
                 <div class="tab-content days-ryotei" id="myTabContent">
 
                     {{--1日目 旅程リスト 開始--}}
@@ -48,6 +53,9 @@
 
                             {{--追加される旅程--}}
                             <div id="sort-time-ryotei">
+                            </div>
+                            <div class="pt-3 one-add">
+                                <button type="button" class="btn square_btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="hyoji1(0)">＋ 予定の追加</button>
                             </div>
 
 
@@ -178,9 +186,7 @@
                                                     <label for="recipient-name" class="col-form-label">自由に予定を入力する（80文字まで）:</label>
                                                     <div class="form-inline">
                                                     <div class="form-group">
-                                                        {{--<input type="text" class="form-control" id="recipient-name2" size="60" maxlength="80" placeholder="例）周辺を散歩">--}}
                                                         <input type="text" class="form-control" id="free-str" size="60" maxlength="80" placeholder="例）周辺を散歩">
-                                                        {{--<input type="text" name="dummy" style="display:none;">--}}
                                                     </div>
                                                     <input onClick="input()" type="button" class="btn btn-primary mb-2" id="free-save" data-dismiss="modal" value="追加">
                                                     </div>
@@ -204,7 +210,9 @@
                     </div>
                 </div>
 
-                <button class="btn btn-lg btn-primary btn-block plan-create" type="submit">この内容で作成</button>
+                <div id="errors"></div>
+
+                <button class="btn btn-lg btn-primary btn-block plan-create" type="submit" id="ajax">この内容で作成</button>
             </div>
         </div>
     </main>

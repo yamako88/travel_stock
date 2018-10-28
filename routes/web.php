@@ -22,10 +22,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/index', 'HomeController@mypage');
 
-Route::get('/list', 'HomeController@list');
+Route::get('/{post}list', 'HomeController@list');
 
 Route::get('/useredit', 'HomeController@userEdit');
 
 Route::post('/userupdate', 'HomeController@userUpdate');
 
 Route::get('/post', 'PostController@post');
+
+Route::post('postcreate', 'PostController@postCreate');
+
+Route::get('/{post}delete', 'PostController@postDelete');
+
+Route::get('/{post}update', 'PostController@postUpdate');

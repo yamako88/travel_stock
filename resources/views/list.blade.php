@@ -6,76 +6,133 @@
         <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
             <img class="mr-3" src="./list_bootstrap_sample_files/bootstrap-outline.svg" alt="" width="48" height="48">
             <div class="lh-100">
-                <h4 class="mb-0 text-white lh-100">Bootstrap</h4>
-                {{--<small>Since 2011</small>--}}
+                <h4 class="mb-0 text-white lh-100">ホーム</h4>
+
             </div>
         </div>
 
-        <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
-            <div class="media text-muted pt-3">
-                <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16614826dae%20text%20%7B%20fill%3A%23007bff%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A2pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16614826dae%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23007bff%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2212.296875%22%20y%3D%2216.9%22%3E32x32%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">@username</strong>
-                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-                </p>
-            </div>
-            <div class="media text-muted pt-3">
-                <img data-src="holder.js/32x32?theme=thumb&amp;bg=e83e8c&amp;fg=e83e8c&amp;size=1" alt="32x32" class="mr-2 rounded" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16614826db1%20text%20%7B%20fill%3A%23e83e8c%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A2pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16614826db1%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23e83e8c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2212.296875%22%20y%3D%2216.9%22%3E32x32%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 32px; height: 32px;">
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">@username</strong>
-                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-                </p>
-            </div>
-            <div class="media text-muted pt-3">
-                <img data-src="holder.js/32x32?theme=thumb&amp;bg=6f42c1&amp;fg=6f42c1&amp;size=1" alt="32x32" class="mr-2 rounded" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16614826db3%20text%20%7B%20fill%3A%236f42c1%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A2pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16614826db3%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%236f42c1%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2212.296875%22%20y%3D%2216.9%22%3E32x32%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 32px; height: 32px;">
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">@username</strong>
-                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-                </p>
-            </div>
-            <small class="d-block text-right mt-3">
-                <a href="http://getbootstrap.com/docs/4.1/examples/offcanvas/#">All updates</a>
-            </small>
-        </div>
+        <div class="album py-5 bg-light">
+            <div class="container">
 
-        <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-            <div class="media text-muted pt-3">
-                <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32" class="mr-2 rounded" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16614826db5%20text%20%7B%20fill%3A%23007bff%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A2pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16614826db5%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23007bff%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2212.296875%22%20y%3D%2216.9%22%3E32x32%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 32px; height: 32px;">
-                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <strong class="text-gray-dark">Full Name</strong>
-                        <a href="http://getbootstrap.com/docs/4.1/examples/offcanvas/#">Follow</a>
+                <meta name="csrf-token" content="{{ csrf_token() }}">
+                {{ csrf_field() }}
+                <div class="form-group row">
+                    <div class="col-sm-10 title-top">
+                        <h1 for="colFormLabelLg" class="title col-form-label col-form-label-lg">{{ $posts->title }}</h1>
                     </div>
-                    <span class="d-block">@username</span>
                 </div>
-            </div>
-            <div class="media text-muted pt-3">
-                <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32" class="mr-2 rounded" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16614826db6%20text%20%7B%20fill%3A%23007bff%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A2pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16614826db6%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23007bff%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2212.296875%22%20y%3D%2216.9%22%3E32x32%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 32px; height: 32px;">
-                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <strong class="text-gray-dark">Full Name</strong>
-                        <a href="http://getbootstrap.com/docs/4.1/examples/offcanvas/#">Follow</a>
+                <div class="form-group row">
+                    <div class="col-sm-10 comment-top">
+                        <h3 for="colFormLabel" class="comment col-form-label">{{ $posts->comment }}</h3>
                     </div>
-                    <span class="d-block">@username</span>
                 </div>
-            </div>
-            <div class="media text-muted pt-3">
-                <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32" class="mr-2 rounded" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16614826db8%20text%20%7B%20fill%3A%23007bff%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A2pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16614826db8%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23007bff%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2212.296875%22%20y%3D%2216.9%22%3E32x32%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 32px; height: 32px;">
-                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <strong class="text-gray-dark">Full Name</strong>
-                        <a href="http://getbootstrap.com/docs/4.1/examples/offcanvas/#">Follow</a>
+
+                <div class="tab-content days-ryotei" id="myTabContent">
+
+                    {{--1日目 旅程リスト 開始--}}
+                    <div class="tab-pane fade show active tab-day" id="home1" role="tabpanel" aria-labelledby="home1-tab">
+                        <div class="my-3 p-3 bg-white rounded shadow-sm">
+                            <h6 class="border-bottom border-gray pb-2 mb-0">旅程リスト</h6>
+
+                            {{--追加される旅程--}}
+                            <div id="sort-time-ryotei">
+                            </div>
+
+                        </div>
+
                     </div>
-                    <span class="d-block">@username</span>
                 </div>
+                <div class="yokomigi">
+                    <a class="btn btn-lg btn-primary btn-block plan-create yoko-left" href="{{ $posts->id }}update">編集</a>
+                </div>
+                <div class="yokohidari">
+                <a class="btn btn-lg btn-primary btn-block plan-create yoko-right" href="{{ $posts->id }}delete" onclick='return confirm("削除します。よろしいですか？");'>削除</a>
+                </div>
+                <div class="yokoclea"></div>
             </div>
-            <small class="d-block text-right mt-3">
-                <a href="http://getbootstrap.com/docs/4.1/examples/offcanvas/#">All suggestions</a>
-            </small>
         </div>
     </main>
+
+    <script type="text/javascript">
+
+            let spots = <?php echo $spots ?>;
+
+            if(spots) {
+                function load() {
+
+                    let s = '';
+                    sorting();
+
+                    for (let i = 0; i < spots.length; i++) {
+
+                        let year = 2018;
+                        let month = 8;
+                        let day = 31;
+                        let firsthour = spots[i]['started_hour_at'];
+                        let firstminute = spots[i]['started_minute_at'];
+                        let finishhour = spots[i]['finished_hour_at'];
+                        let finishminute = spots[i]['finished_minute_at'];
+
+                        let firstdt = new Date(year, month, day, firsthour, firstminute);
+                        let finishdt = new Date(year, month, day, finishhour, finishminute);
+
+                        let outHour = firstdt.getHours();
+                        let outMinute = firstdt.getMinutes();
+                        let autHour = finishdt.getHours();
+                        let autMinute = finishdt.getMinutes();
+
+                        outHour = ('0' + outHour).slice(-2);
+                        outMinute = ('0' + outMinute).slice(-2);
+                        autHour = ('0' + autHour).slice(-2);
+                        autMinute = ('0' + autMinute).slice(-2);
+
+                        // datetime型
+
+                        if (i > 0) {
+                            s += '<div class="text-muted">\n' +
+                                '                                <h5>↓</h5>\n' +
+                                '                            </div>\n';
+                        }
+                        s += '<div class="media text-muted pt-3">\n' +
+                            '                                <div class="small">\n' +
+                            '                                <div>\n' +
+                            '                                    <strong class="time-time">' + outHour + ':' + outMinute + ' - ' + autHour + ':' + autMinute + '</strong>\n' +
+                            '</div>\n' +
+                            '                                </div>\n' +
+                            '                                <div class="media-body pb-3 border-bottom">\n' +
+                            '                                    <div class="d-flex justify-content-between">';
+                        if (spots[i]['icon'] == '<i class="far fa-star icon-back"></i>') {
+                            s += '<strong class="text-gray-dark">' + spots[i]['icon'] + ' ' + spots[i]['name'] + '</strong>';
+                        } else {
+                            s += '<strong class="text-gray-dark">' + spots[i]['icon'] + ' ' + spots[i]['name'] + '<a href="' + spots[i]['url'] + '" target="_blank">(詳細)</a></strong>';
+                        }
+                        s += '                                    </div>\n' +
+                            '                                </div>\n' +
+                            '                            </div>';
+                    }
+
+                    document.getElementById("sort-time-ryotei").innerHTML = s;
+                }
+            }
+
+
+            function sorting() {
+
+                spots.sort(function (a, b) {
+                    return a.started_hour_at - b.started_hour_at;
+                });
+
+                for(let i = 0; i < spots.length; i++) {
+                    spots[i] = JSON.stringify(spots[i]);
+                }
+
+                for(i = 0; i < spots.length; i++) {
+                    spots[i] = JSON.parse(spots[i]);
+                }
+            }
+
+
+    </script>
 
 
 @endsection

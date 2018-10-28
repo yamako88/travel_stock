@@ -14,9 +14,9 @@
     <link href="./login_bootstrap_sample_files/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    {{--<link href="./login_bootstrap_sample_files/signin.css" rel="stylesheet">--}}
+{{--<link href="./login_bootstrap_sample_files/signin.css" rel="stylesheet">--}}
 
-    <!-- Bootstrap core CSS -->
+<!-- Bootstrap core CSS -->
     <link href="./list_bootstrap_sample_files/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -46,28 +46,15 @@
 
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="home">ホーム <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="useredit">登録情報変更</a>
-            </li>
             <li class="nav-item">
-                <a>ようこそ、{{ Auth::user()->name }}さん</a>
+            <a>ようこそ、{{ Auth::user()->name }}さん　</a>
             </li>
+            </ul>
 
-        </ul>
 
         <ul class="navbar-nav nav-logout">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                    ログアウト
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
+                @yield('exit')
             </li>
         </ul>
 

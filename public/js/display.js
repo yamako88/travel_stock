@@ -16,6 +16,11 @@ $(function(){
     });
 });
 
+$("#delete-ls").on("click", function () {
+    localStorage.clear();
+});
+
+
 // モーダルの表示・非表示
 function hyoji1(num)
 {
@@ -131,10 +136,9 @@ let moji1 = "home";
 let tab = "-tab";
 let tmp1 = document.getElementsByClassName("tab-day");
 
-// 1日目の表示
+// 旅程作成ボタン
 function firstDate() {
-        localStorage.removeItem('myTab');
-        localStorage.removeItem('myTabContent');
+        localStorage.clear();
 }
 
 // 日数の追加
@@ -144,7 +148,7 @@ function firstDate() {
 
             $('.nav-tabs :nth-last-child(1)').remove(':contains("×")');
             $('.nav-tabs :nth-last-child(2)').after('<li class="nav-item">\n' +
-                '                        <a class="nav-link lists" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false">' + nissuu +'日目</a>\n' +
+                '                        <a class="nav-link lists" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false"><span id="nissuu">' + nissuu +'</span>日目</a>\n' +
                 '                    </li>');
             $('.nav-tabs :nth-last-child(2)').append('<a href="#" class="tab_delete_btn" id="tab_delete_btn" style="display: block;" onclick="deleteDate()">×</a>');
 
@@ -155,7 +159,7 @@ function firstDate() {
                 '                        <div class="my-3 p-3 bg-white rounded shadow-sm">\n' +
                 '                            <h6 class="border-bottom border-gray pb-2 mb-0">' + nissuu +'日目</h6>\n' +
                 '                            <div class="pt-3 one-add">\n' +
-                '                                <button type="button" class="btn square_btn" id="openModal" onclick="hyoji1(0)">＋ 予定の追加</button>\n' +
+                '                                <button type="button" class="btn square_btn" id="openModal" onclick="hyoji' + nissuu +'(0)">＋ 予定の追加</button>\n' +
                 '                            </div>\n' +
                 '                        </div>\n' +
                 '                    </div>');
@@ -179,7 +183,7 @@ function deleteDate() {
 }
 
 
-// ローカルストレージに日数を保存
+// ローカルストレージに日数を表示・保存
     if (localStorage.getItem('myTab')){
         $('#myTab')[0].innerHTML = localStorage.getItem('myTab');
     }
@@ -187,10 +191,20 @@ function deleteDate() {
         $('#myTabContent')[0].innerHTML = localStorage.getItem('myTabContent');
     }
 
+    // タイトルとコメントの表示・保存
+if (localStorage.getItem('title')){
+    $('#title').val(localStorage.getItem('title'));
+}
+if (localStorage.getItem('comment')){
+    $('#comment').val(localStorage.getItem('comment'));
+}
+
 $(function() {
     (function autoSave() {
         localStorage.setItem('myTab', $('#myTab')[0].innerHTML);
         localStorage.setItem('myTabContent', $('#myTabContent')[0].innerHTML);
+        localStorage.setItem('title', $('#title').val());
+        localStorage.setItem('comment', $('#comment').val());
         setTimeout(autoSave, 1000);
     })();
 });
@@ -216,6 +230,7 @@ function load() {
 
 // 「値を入れたらクリック」ボタンをクリック時に実行（※４）
 function input() {
+    $('#modalArea').fadeOut();
 
     if(document.getElementById("free-str").value == "") {
         alert("入力値が空白です");
@@ -248,7 +263,7 @@ function show() {
     for (let i = 0; i < arr.length; i++) {
 
         let year = 2018;
-        let month = 08;
+        let month = 8;
         let day = 31;
         let firsthour = arr[i]['first_hour'];
         let firstminute = arr[i]['first_minute'];
@@ -282,9 +297,13 @@ function show() {
             '</div>\n' +
             '                                </div>\n' +
             '                                <div class="media-body pb-3 border-bottom">\n' +
-            '                                    <div class="d-flex justify-content-between">\n' +
-            '                                        <strong class="text-gray-dark">' + arr[i]['icon'] + ' ' + arr[i]['text'] + '</strong>\n' +
-            '                                        <div class="update-del">\n' +
+            '                                    <div class="d-flex justify-content-between">';
+            if (arr[i]['icon'] == '<i class="far fa-star icon-back"></i>') {
+                s +='<strong class="text-gray-dark">' + arr[i]['icon'] + ' ' + arr[i]['text'] + '</strong>';
+            }else{
+                s +='<strong class="text-gray-dark">' + arr[i]['icon'] + ' ' + arr[i]['text'] + '<a href="' + arr[i]['url'] +'" target="_blank">(詳細)</a></strong>';
+            }
+            s += '                                        <div class="update-del">\n' +
             '                                        <button type="button" onclick="deleteValue(' + i + ')">削除</button>\n' +
             '                                        </div>\n' +
             '                                    </div>\n' +
@@ -292,10 +311,6 @@ function show() {
             '                            </div>';
     }
 
-    s += '<div class="pt-3 one-add">\n' +
-        '                                <button type="button" class="btn square_btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="hyoji1(0)">＋ 予定の追加</button>';
-
-    s += '</div>';
     document.getElementById("sort-time-ryotei").innerHTML = s;
 }
 
@@ -406,10 +421,11 @@ function foodList(num) {
     let aboutTime = JSON.parse(localStorage.getItem("aboutTime"));
     arr.push({
         "first_hour" : aboutTime.about_first_hour,
-        "text" : cells + "<a href=" + foodURL +" target='_blank'>(詳細)</a>",
+        "text" : cells,
         "first_minute": aboutTime.about_first_minute,
         "finish_hour" : aboutTime.about_finish_hour,
         "finish_minute": aboutTime.about_finish_minute,
+        "url": foodURL,
         "icon": '<i class="fas fa-utensils icon-back"></i>'});
     save();
 }
@@ -443,3 +459,60 @@ $( function () {
         }
     })
 });
+
+
+// ajaxで値をpostする
+$(function () {
+
+    $('#ajax').on("click", function () {
+
+        $(".errors-post").remove();
+
+        let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+        let title = localStorage.getItem('title');
+        let comment = localStorage.getItem('comment');
+        let yotei = JSON.parse(localStorage.getItem('yotei'));
+
+        $.ajax({
+
+            type: "POST",
+            datatype: 'json',
+            url: "postcreate",
+            data:{
+                '_token': CSRF_TOKEN,
+                'title':title,
+                'comment':comment,
+                'yotei':yotei,
+            }
+        })
+            .done(function(){ //ajaxの通信に成功した場合
+                window.location.href = "home";
+                alert("新しく旅程を登録しました！");
+            })
+            .fail(function(data){ //ajaxの通信に失敗した場合
+
+                let errors = $.parseJSON(data.responseText);
+                if(errors['errors']['title']){
+                    $("#errors").append("<span class='help-block errors-post'>\n" +
+                        "                            <strong class='error-color'>" + errors['errors']['title'] + "</strong>\n" +
+                        "                            <br>\n" +
+                        "                        </span>");
+                }
+                if(errors['errors']['comment']){
+                    $("#errors").append("<span class='help-block errors-post'>\n" +
+                        "                            <strong class='error-color'>" + errors['errors']['comment'] + "</strong>\n" +
+                        "                            <br>\n" +
+                        "                        </span>");
+                }
+                if(errors['errors']['yotei']){
+                    $("#errors").append("<span class='help-block errors-post'>\n" +
+                        "                            <strong class='error-color'>" + errors['errors']['yotei'] + "</strong>\n" +
+                        "                            <br>\n" +
+                        "                        </span>");
+                }
+            });
+    });
+});
+
+

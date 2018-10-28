@@ -149,7 +149,7 @@ strong {
 
 .post-add {
   text-align: center;
-  margin: 15px auto;
+  margin: 5px auto 10px auto;
 }
 
 .pt-3 h7{
@@ -346,6 +346,126 @@ strong {
   z-index: 1035;
 }
 
+.ellipsis {
+  position: relative;
+  height: 40px;
+  overflow: hidden;
+  line-height: 20px;
+}
+
+.ellipsis:before, .ellipsis:after {
+  position: absolute;
+  background: #fff;
+}
+
+.ellipsis:before {
+  content: "...";
+  bottom: 0;
+  right: 0;
+}
+
+.ellipsis:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+}
+
+.ellipsis1 {
+  position: relative;
+  height: 20px;
+  overflow: hidden;
+  line-height: 20px;
+}
+
+.ellipsis1:before, .ellipsis1:after {
+  position: absolute;
+  background: #fff;
+}
+
+.ellipsis1:before {
+  content: "...";
+  bottom: 0;
+  right: 0;
+  background-color: #fff8e8;
+}
+
+.ellipsis1:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #fff8e8;
+}
+
+.box8 {
+  padding: 0.5em 1em;
+  margin-bottom: 5px;
+  color: #232323;
+  background: #fff8e8;
+  border-left: solid 10px #ffc06e;
+}
+.box8 p {
+  background-color: #fff8e8;
+}
+
+.name-add-yotei {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+.title-top {
+  padding: 0.5em 1em;
+  margin-bottom: 5px;
+  color: #232323;
+  background: #ffab40;
+  border-left: solid 10px #ff6400;
+}
+
+.title {
+  font-size: 2.5rem;
+  background-color: #ffab40;
+  color: white;
+}
+
+.comment {
+  font-size: 1.5rem;
+}
+
+.comment-top {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #474747;
+  background: whitesmoke;/*背景色*/
+  border-left: double 7px #ff6400;/*左線*/
+  border-right: double 7px #ff6400;/*右線*/
+}
+
+.yokomigi {
+  float: left;
+  width: 50%;
+}
+
+.yokohidari {
+  float: left;
+  width: 50%;
+}
+
+.yokoclea {
+  clear: both;
+}
+
+.yoko-left {
+  margin-right: 30px;
+  background-color: #95B745;
+  border: none;
+}
+
+.yoko-right {
+  margin-left: 30px;
+  background-color: #C5376E;
+  border: none;
+}
 
 @media (max-width: 991.98px) {
   .offcanvas-collapse {

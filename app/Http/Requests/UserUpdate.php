@@ -41,7 +41,7 @@ class UserUpdate extends FormRequest
      */
     public function messages()
     {
-        return [
+        return response()->json([
             'name.required' => 'ユーザー名を入力してください',
             'name.unique' => '同じユーザー名が存在しています',
             'email.required' => 'メールアドレスを入力してください',
@@ -50,6 +50,6 @@ class UserUpdate extends FormRequest
             'password.required' => 'パスワードを入力してください',
             'password.min' => '6文字以上入力してください',
             'password.confirmed' => 'パスワードが一致しません。入力し直してください。',
-        ];
+        ]);
     }
 }
