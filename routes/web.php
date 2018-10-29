@@ -26,7 +26,7 @@ Route::get('list/{post}', 'HomeController@list');
 
 Route::get('user/edit', 'UsersController@edit');
 
-Route::post('/user/update', 'UsersController@update');
+Route::post('user/update', 'UsersController@update');
 
 Route::get('create', 'PostsController@create');
 

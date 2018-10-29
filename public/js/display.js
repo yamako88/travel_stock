@@ -478,7 +478,7 @@ $(function () {
 
             type: "POST",
             datatype: 'json',
-            url: "postcreate",
+            url: "post/store",
             data:{
                 '_token': CSRF_TOKEN,
                 'title':title,
