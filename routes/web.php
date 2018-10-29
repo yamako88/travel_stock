@@ -18,14 +18,20 @@ Route::get(
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
 
-Route::get('/index', 'HomeController@mypage');
+Route::get('index', 'HomeController@mypage');
 
-Route::get('/list', 'HomeController@list');
+Route::get('list/{post}', 'HomeController@list');
 
-Route::get('/useredit', 'HomeController@userEdit');
+Route::get('useredit', 'HomeController@userEdit');
 
 Route::post('/userupdate', 'HomeController@userUpdate');
 
-Route::get('/post', 'PostController@post');
+Route::get('post', 'PostController@post');
+
+Route::post('postcreate', 'PostController@postCreate');
+
+Route::get('delete/{post}', 'PostController@postDelete');
+
+Route::get('update/{post}', 'PostController@postUpdate');

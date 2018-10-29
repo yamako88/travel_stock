@@ -14,9 +14,9 @@
     <link href="{{ asset('./login_bootstrap_sample_files/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    {{--<link href="./login_bootstrap_sample_files/signin.css" rel="stylesheet">--}}
+{{--<link href="./login_bootstrap_sample_files/signin.css" rel="stylesheet">--}}
 
-    <!-- Bootstrap core CSS -->
+<!-- Bootstrap core CSS -->
     <link href="{{ asset('./list_bootstrap_sample_files/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -46,28 +46,15 @@
 
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ url('home') }}">ホーム <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ url('useredit') }}">登録情報変更</a>
-            </li>
             <li class="nav-item">
-                <a>ようこそ、{{ Auth::user()->name }}さん</a>
+            <a>ようこそ、{{ Auth::user()->name }}さん　</a>
             </li>
+            </ul>
 
-        </ul>
 
         <ul class="navbar-nav nav-logout">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                    ログアウト
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
+                @yield('exit')
             </li>
         </ul>
 
@@ -111,7 +98,6 @@
 {{--<script type="text/javascript" src="./js/display.js"></script>--}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
-
 @yield('script')
 <svg xmlns="http://www.w3.org/2000/svg" width="348" height="225" viewBox="0 0 348 225" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="17" style="font-weight:bold;font-size:17pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text></svg></body></html>
 
