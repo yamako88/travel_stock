@@ -5,7 +5,7 @@
 <main role="main" class="container">
 
     <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
-        <img class="mr-3" src="./list_bootstrap_sample_files/bootstrap-outline.svg" alt="" width="48" height="48">
+        <img class="mr-3" src="{{ asset('./list_bootstrap_sample_files/bootstrap-outline.svg') }}" alt="" width="48" height="48">
         <div class="lh-100">
             <h4 class="mb-0 text-white lh-100">ホーム</h4>
         </div>
@@ -29,7 +29,7 @@
                                             <p class="btn-sm ellipsis">{{ $post->comment }}</p>
                                     </div>
                                 </div>
-                                <a href="list/{{ $post->id }}"></a>
+                                <a href="{{ url('list/'.$post->id) }}"></a>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                         <p class="name-add-yotei">予定を追加</p>
 
                     <div class="post-add">
-                        <a onclick="firstDate()" href="post?id=0" class="btn-add">➕</a>
+                        <a onclick="firstDate()" href="{{ url('post') }}" class="btn-add">➕</a>
                     </div>
                     </div>
                 </div>
@@ -56,5 +56,5 @@
 
 
 @section('script')
-    <script type="text/javascript" src="./js/display.js"></script>
+    <script type="text/javascript" src="{{ asset('./js/display.js') }}"></script>
 @endsection

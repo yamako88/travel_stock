@@ -32,16 +32,7 @@ class HomeController extends Controller
     {
         $id = Auth::id();
         $posts = Post::all()->sortByDesc('id')->where('user_id', $id);
-//        dd($posts);
         return view('home', compact('posts'));
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function mypage()
-    {
-        return view('index');
     }
 
     /**
@@ -49,7 +40,6 @@ class HomeController extends Controller
      */
     public function list($post)
     {
-//        dd($post);
         $posts = Post::find($post);
         $spots = Spot::where('post_id',$post)->get();
         return view('list', compact('posts','spots'));

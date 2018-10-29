@@ -1,7 +1,7 @@
-@extends('layouts.change2')
+@extends('layouts.change')
 
 @section('exit')
-    <a id="delete-ls" class='nav-link' href='../home' style='padding: 3px 10px; margin-bottom: 3px; border: 1px solid white; border-radius: 5px;' onclick='return confirm("入力したデータは保存されません。編集する前の状態に戻ります。よろしいですか？");'>旅程編集をやめる</a>
+    <a id="delete-ls" class='nav-link' href='{{ url('home') }}' style='padding: 3px 10px; margin-bottom: 3px; border: 1px solid white; border-radius: 5px;' onclick='return confirm("入力したデータは保存されません。編集する前の状態に戻ります。よろしいですか？");'>旅程編集をやめる</a>
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
     <main role="main" class="container">
 
         <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
-            <img class="mr-3" src="./list_bootstrap_sample_files/bootstrap-outline.svg" alt="" width="48" height="48">
+            <img class="mr-3" src="{{ asset('./list_bootstrap_sample_files/bootstrap-outline.svg') }}" alt="" width="48" height="48">
             <div class="lh-100">
                 <h4 class="mb-0 text-white lh-100">旅程編集</h4>
 
@@ -224,14 +224,10 @@
 
     <script type="text/javascript">
 
-
-
-        let spots = <?php echo $spots ?>;
-
+        (window.onload = function() {
+            let spots = {!! $spots !!};
 
         if(spots) {
-            function load() {
-
 
                 let s = '';
                 sorting();
@@ -287,7 +283,7 @@
                         '                            </div>';
                 }
                 document.getElementById("sort-time-ryotei").innerHTML = s;
-            }
+
         }
 
 
@@ -305,6 +301,8 @@
                 spots[i] = JSON.parse(spots[i]);
             }
         }
+
+        })();
 
 
 

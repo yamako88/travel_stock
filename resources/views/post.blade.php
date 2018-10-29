@@ -1,7 +1,7 @@
 @extends('layouts.change')
 
 @section('exit')
-    <a id="delete-ls" class='nav-link' href='home' style='padding: 3px 10px; margin-bottom: 3px; border: 1px solid white; border-radius: 5px;' onclick='return confirm("入力したデータは保存されません。よろしいですか？");'>旅程作成をやめる</a>
+    <a id="delete-ls" class='nav-link' href='{{ url('home') }}' style='padding: 3px 10px; margin-bottom: 3px; border: 1px solid white; border-radius: 5px;' onclick='return confirm("入力したデータは保存されません。よろしいですか？");'>旅程作成をやめる</a>
     @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <main role="main" class="container">
 
         <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
-            <img class="mr-3" src="./list_bootstrap_sample_files/bootstrap-outline.svg" alt="" width="48" height="48">
+            <img class="mr-3" src="{{ asset('./list_bootstrap_sample_files/bootstrap-outline.svg') }}" alt="" width="48" height="48">
             <div class="lh-100">
                 <h4 class="mb-0 text-white lh-100">旅程作成</h4>
 
@@ -220,5 +220,5 @@
 @endsection
 
 @section('script')
-    <script type="text/javascript" src="./js/display.js"></script>
+    <script type="text/javascript" src="{{ asset('./js/display.js') }}"></script>
 @endsection

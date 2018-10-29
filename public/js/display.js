@@ -1,9 +1,9 @@
 // モーダルを閉じる
-// $(function () {
+$(function () {
     $('#closeModal , #modalBg , #closeModal1 , #food-add').click(function(){
         $('#modalArea').fadeOut();
     });
-// });
+});
 
 // エンターキーの無効化
 $(function(){

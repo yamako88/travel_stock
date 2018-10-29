@@ -1,10 +1,10 @@
-@extends('layouts.default2')
+@extends('layouts.default')
 
 @section('content')
 
     <main role="main" class="container">
         <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
-            <img class="mr-3" src="./list_bootstrap_sample_files/bootstrap-outline.svg" alt="" width="48" height="48">
+            <img class="mr-3" src="{{ asset('./list_bootstrap_sample_files/bootstrap-outline.svg') }}" alt="" width="48" height="48">
             <div class="lh-100">
                 <h4 class="mb-0 text-white lh-100">ホーム</h4>
 
@@ -43,10 +43,10 @@
                     </div>
                 </div>
                 <div class="yokomigi">
-                    <a class="btn btn-lg btn-primary btn-block plan-create yoko-left" href="../update/{{ $posts->id }}">編集</a>
+                    <a class="btn btn-lg btn-primary btn-block plan-create yoko-left" href="{{ url('update/'.$posts->id) }}">編集</a>
                 </div>
                 <div class="yokohidari">
-                <a class="btn btn-lg btn-primary btn-block plan-create yoko-right" href="../delete/{{ $posts->id }}" onclick='return confirm("削除します。よろしいですか？");'>削除</a>
+                <a class="btn btn-lg btn-primary btn-block plan-create yoko-right" href="{{ url('delete/'.$posts->id) }}" onclick='return confirm("削除します。よろしいですか？");'>削除</a>
                 </div>
                 <div class="yokoclea"></div>
             </div>
@@ -55,12 +55,10 @@
 
     <script type="text/javascript">
 
-            let spots = <?php echo $spots ?>;
-            console.log(spots);
+        (window.onload = function() {
+            let spots = {!! $spots !!};
 
             if(spots) {
-                // function load() {
-
                     let s = '';
                     sorting();
 
@@ -113,9 +111,7 @@
                     }
 
                     document.getElementById("sort-time-ryotei").innerHTML = s;
-                // }
             }
-
 
             function sorting() {
 
@@ -131,6 +127,8 @@
                     spots[i] = JSON.parse(spots[i]);
                 }
             }
+
+        })();
 
 
     </script>
