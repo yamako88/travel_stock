@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Spots_categories
+ * Class Post
  * @package App\Models
  */
-class SpotsCategories extends Model
+class Post extends Model
 {
     //
 }

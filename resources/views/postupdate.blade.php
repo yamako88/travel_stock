@@ -1,7 +1,7 @@
-@extends('layouts.change')
+@extends('layouts.change2')
 
 @section('exit')
-    <a id="delete-ls" class='nav-link' href='home' style='padding: 3px 10px; margin-bottom: 3px; border: 1px solid white; border-radius: 5px;' onclick='return confirm("入力したデータは保存されません。編集する前の状態に戻ります。よろしいですか？");'>旅程編集をやめる</a>
+    <a id="delete-ls" class='nav-link' href='../home' style='padding: 3px 10px; margin-bottom: 3px; border: 1px solid white; border-radius: 5px;' onclick='return confirm("入力したデータは保存されません。編集する前の状態に戻ります。よろしいですか？");'>旅程編集をやめる</a>
 @endsection
 
 @section('content')

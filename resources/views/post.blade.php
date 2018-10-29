@@ -217,5 +217,8 @@
         </div>
     </main>
 
+@endsection
 
+@section('script')
+    <script type="text/javascript" src="./js/display.js"></script>
 @endsection

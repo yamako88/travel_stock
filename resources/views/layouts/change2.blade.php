@@ -11,22 +11,22 @@
     <title>Offcanvas template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="./login_bootstrap_sample_files/bootstrap.min.css" rel="stylesheet">
+    <link href="../login_bootstrap_sample_files/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
 {{--<link href="./login_bootstrap_sample_files/signin.css" rel="stylesheet">--}}
 
 <!-- Bootstrap core CSS -->
-    <link href="./list_bootstrap_sample_files/bootstrap.min.css" rel="stylesheet">
+    <link href="../list_bootstrap_sample_files/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="./list_bootstrap_sample_files/offcanvas.css" rel="stylesheet">
+    <link href="../list_bootstrap_sample_files/offcanvas.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="./index_bootstrap_sanple_files/bootstrap.min.css" rel="stylesheet">
+    <link href="../index_bootstrap_sanple_files/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="./index_bootstrap_sanple_files/album.css" rel="stylesheet">
+    <link href="../index_bootstrap_sanple_files/album.css" rel="stylesheet">
 
     <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet">
 
@@ -47,9 +47,9 @@
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-            <a>ようこそ、{{ Auth::user()->name }}さん　</a>
+                <a>ようこそ、{{ Auth::user()->name }}さん　</a>
             </li>
-            </ul>
+        </ul>
 
 
         <ul class="navbar-nav nav-logout">
@@ -78,30 +78,27 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="./index_bootstrap_sanple_files/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="../index_bootstrap_sanple_files/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="./index_bootstrap_sanple_files/popper.min.js"></script>
-<script src="./index_bootstrap_sanple_files/bootstrap.min.js"></script>
-<script src="./index_bootstrap_sanple_files/holder.min.js"></script>
+<script src="../index_bootstrap_sanple_files/popper.min.js"></script>
+<script src="../index_bootstrap_sanple_files/bootstrap.min.js"></script>
+<script src="../index_bootstrap_sanple_files/holder.min.js"></script>
 
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 {{--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>--}}
-<script src="./list_bootstrap_sample_files/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="../list_bootstrap_sample_files/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="./list_bootstrap_sample_files/popper.min.js"></script>
-<script src="./list_bootstrap_sample_files/bootstrap.min.js"></script>
-<script src="./list_bootstrap_sample_files/holder.min.js"></script>
-<script src="./list_bootstrap_sample_files/offcanvas.js"></script>
+<script src="../list_bootstrap_sample_files/popper.min.js"></script>
+<script src="../list_bootstrap_sample_files/bootstrap.min.js"></script>
+<script src="../list_bootstrap_sample_files/holder.min.js"></script>
+<script src="../list_bootstrap_sample_files/offcanvas.js"></script>
 {{--<script type="text/javascript" src="./js/display.js"></script>--}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+
 @yield('script')
 <svg xmlns="http://www.w3.org/2000/svg" width="348" height="225" viewBox="0 0 348 225" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="17" style="font-weight:bold;font-size:17pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text></svg></body></html>
 
-
-
-
-{{--<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="2" style="font-weight:bold;font-size:2pt;font-family:Arial, Helvetica, Open Sans, sans-serif">32x32</text></svg></body></html>--}}

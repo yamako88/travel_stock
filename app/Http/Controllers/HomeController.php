@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserUpdate;
-use App\Models\Posts;
-use App\Models\Spots;
+use App\Models\Post;
+use App\Models\Spot;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -31,8 +31,9 @@ class HomeController extends Controller
     public function index()
     {
         $id = Auth::id();
-        $posts = Posts::all()->sortByDesc('id')->where('user_id', $id);
-        return view('home', ['posts' => $posts]);
+        $posts = Post::all()->sortByDesc('id')->where('user_id', $id);
+//        dd($posts);
+        return view('home', compact('posts'));
     }
 
     /**
@@ -48,9 +49,10 @@ class HomeController extends Controller
      */
     public function list($post)
     {
-        $posts = Posts::find($post);
-        $spots = Spots::where('post_id',$post)->get();
-        return view('list', ['posts' => $posts, 'spots' => $spots]);
+//        dd($post);
+        $posts = Post::find($post);
+        $spots = Spot::where('post_id',$post)->get();
+        return view('list', compact('posts','spots'));
     }
 
     /**
@@ -59,7 +61,7 @@ class HomeController extends Controller
     public function userEdit()
     {
         $user = Auth::user();
-        return view('userupdate', ['user' => $user]);
+        return view('userupdate', compact('user'));
     }
 
     /**

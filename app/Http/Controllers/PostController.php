@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostCreate;
-use App\Http\Requests\SpotCreate;
-use App\Models\SpotsCategories;
-use App\Models\Spots;
-use App\Models\Posts;
+use App\Models\SpotsCategory;
+use App\Models\Spot;
+use App\Models\Post;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
+use phpDocumentor\Reflection\Types\Compound;
 
 
 /**
@@ -35,8 +35,8 @@ class PostController extends Controller
      */
     public function post()
     {
-        $categories = SpotsCategories::all();
-        return view('post', ['categories' => $categories]);
+        $categories = SpotsCategory::all();
+        return view('post', compact('categories'));
     }
 
     /**
@@ -47,7 +47,7 @@ class PostController extends Controller
     {
         $user_id = Auth::id();
 
-        $post = new Posts;
+        $post = new Post;
         $post->user_id = $user_id;
         $post->title = $request->title;
         $post->comment = $request->comment;
@@ -70,7 +70,7 @@ class PostController extends Controller
         $yoteis = $request->yotei;
 
         foreach ($yoteis as $yotei){
-        $spot = new Spots;
+        $spot = new Spot;
         $spot->name = $yotei['text'];
         if(isset($yotei['url'])){
             $spot->url = $yotei['url'];
@@ -95,7 +95,7 @@ class PostController extends Controller
      */
     public function postDelete($post)
     {
-        Posts::destroy($post);
+        Post::destroy($post);
         return redirect('home')->with('message', '記事が削除されました');
     }
 
@@ -105,10 +105,10 @@ class PostController extends Controller
      */
     public function postUpdate($post)
     {
-        $posts = Posts::find($post);
-        $spots = Spots::where('post_id',$post)->get();
-        $categories = SpotsCategories::all();
-        return view('postupdate', ['posts' => $posts, 'categories' => $categories, 'spots' => $spots]);
+        $posts = Post::find($post);
+        $spots = Spot::where('post_id',$post)->get();
+        $categories = SpotsCategory::all();
+        return view('postupdate', compact('posts','categories','spots'));
     }
 
 }

@@ -8,7 +8,6 @@
         <img class="mr-3" src="./list_bootstrap_sample_files/bootstrap-outline.svg" alt="" width="48" height="48">
         <div class="lh-100">
             <h4 class="mb-0 text-white lh-100">ホーム</h4>
-            {{--<small>登録した旅程一覧</small>--}}
         </div>
     </div>
 
@@ -30,7 +29,7 @@
                                             <p class="btn-sm ellipsis">{{ $post->comment }}</p>
                                     </div>
                                 </div>
-                                <a href="{{ $post->id }}list"></a>
+                                <a href="list/{{ $post->id }}"></a>
                             </div>
                         </div>
                     </div>
@@ -53,4 +52,9 @@
 </main>
 
 
+@endsection
+
+
+@section('script')
+    <script type="text/javascript" src="./js/display.js"></script>
 @endsection

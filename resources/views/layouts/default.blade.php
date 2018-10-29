@@ -108,10 +108,11 @@
 <script src="./list_bootstrap_sample_files/bootstrap.min.js"></script>
 <script src="./list_bootstrap_sample_files/holder.min.js"></script>
 <script src="./list_bootstrap_sample_files/offcanvas.js"></script>
-<script type="text/javascript" src="./js/display.js"></script>
+{{--<script type="text/javascript" src="./js/display.js"></script>--}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
 
+@yield('script')
 <svg xmlns="http://www.w3.org/2000/svg" width="348" height="225" viewBox="0 0 348 225" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="17" style="font-weight:bold;font-size:17pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text></svg></body></html>
 
 
