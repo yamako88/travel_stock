@@ -40,7 +40,7 @@
                         <p class="name-add-yotei">予定を追加</p>
 
                     <div class="post-add">
-                        <a onclick="firstDate()" href="{{ url('post') }}" class="btn-add">➕</a>
+                        <a onclick="firstDate()" href="{{ url('create') }}" class="btn-add">➕</a>
                     </div>
                     </div>
                 </div>

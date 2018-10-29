@@ -50,7 +50,7 @@
                 <a class="nav-link" href="{{ url('home') }}">ホーム <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url('useredit') }}">登録情報変更</a>
+                <a class="nav-link" href="{{ url('user/edit') }}">登録情報変更</a>
             </li>
             <li class="nav-item">
                 <a>ようこそ、{{ Auth::user()->name }}さん</a>
