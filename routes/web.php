@@ -24,14 +24,14 @@ Route::get('index', 'HomeController@mypage');
 
 Route::get('list/{post}', 'HomeController@list');
 
-Route::get('useredit', 'HomeController@userEdit');
+Route::get('user/edit', 'UsersController@edit');
 
-Route::post('/userupdate', 'HomeController@userUpdate');
+Route::post('/user/update', 'UsersController@update');
 
-Route::get('post', 'PostController@post');
+Route::get('create', 'PostsController@create');
 
-Route::post('postcreate', 'PostController@postCreate');
+Route::post('post/store', 'PostsController@store');
 
-Route::get('delete/{post}', 'PostController@postDelete');
+Route::get('delete/{post}', 'PostsController@delete');
 
-Route::get('update/{post}', 'PostController@postUpdate');
+Route::get('update/{post}', 'PostsController@update');
