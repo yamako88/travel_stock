@@ -32,6 +32,8 @@ Route::get('create', 'PostsController@create');
 
 Route::post('post/store', 'PostsController@store');
 
+Route::post('post/update/{postid}', 'PostsController@update');
+
 Route::get('delete/{post}', 'PostsController@delete');
 
-Route::get('update/{post}', 'PostsController@update');
+Route::get('edit/{post}', 'PostsController@edit');

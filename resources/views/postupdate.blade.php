@@ -21,6 +21,8 @@
         <div class="album py-5 bg-light">
             <div class="container">
 
+                <input type="hidden" name="post_id" value="{{ $posts->id }}" id="update-id">
+
                 <meta name="csrf-token" content="{{ csrf_token() }}">
                 {{ csrf_field() }}
                 <div class="form-group row">
@@ -36,33 +38,21 @@
                     </div>
                 </div>
 
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item not-del">
-                        <a class="nav-link active lists" id="home1-tab" data-toggle="tab" data-day="1" href="#home1" role="tab" aria-controls="home" aria-selected="true">1日目</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link add-date" id="contact-tab" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false" onclick="addDate()">＋</a>
-                    </li>
-                </ul>
-                <ul></ul>
 
                 <div class="tab-content days-ryotei" id="myTabContent">
 
                     {{--1日目 旅程リスト 開始--}}
                     <div class="tab-pane fade show active tab-day" id="home1" role="tabpanel" aria-labelledby="home1-tab">
                         <div class="my-3 p-3 bg-white rounded shadow-sm">
-                            <h6 class="border-bottom border-gray pb-2 mb-0">1日目</h6>
+                            <h6 class="border-bottom border-gray pb-2 mb-0">旅程リスト</h6>
 
                             {{--追加される旅程--}}
                             <div id="sort-time-ryotei">
                             </div>
 
                             <div class="pt-3 one-add">
-                                <button type="button" class="btn square_btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="hyoji1(0)">＋ 予定の追加</button>
+                                <button type="button" class="btn square_btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="hyoji2(0)">＋ 予定の追加</button>
                             </div>
-
-
-
 
                             <div class="pt-3 one-add">
                                 {{--モーダル表示 1日目 開始--}}
@@ -74,7 +64,7 @@
 
                                                 {{--共通モーダル　タイトル--}}
                                                 <div class="modal-header">
-                                                    <a href="#" class="square-btn-back" id="modoru" onclick="hyoji1(0)">
+                                                    <a href="#" class="square-btn-back" id="modoru" onclick="hyoji2(0)">
                                                         <i class="fas fa-angle-left"></i> 戻る
                                                     </a>
                                                     <h5 class="modal-title" id="choice">予定の追加</h5>
@@ -171,16 +161,16 @@
                                                 </div>
 
                                                 <div class="choices" id="choice2">
-                                                    <a href="#" class="choice-btn" onclick="hyoji1(1)">
+                                                    <a href="#" class="choice-btn" onclick="hyoji2(1)">
                                                         {!! $categories[0]->font_awesome_html !!} {{ $categories[0]->name }}
                                                     </a>
-                                                    <a href="#" class="choice-btn" onclick="hyoji1(2)">
+                                                    <a href="#" class="choice-btn" onclick="hyoji2(2)">
                                                         {!! $categories[1]->font_awesome_html !!} {{ $categories[1]->name }}
                                                     </a>
-                                                    <a href="#" class="choice-btn" onclick="hyoji1(3)">
+                                                    <a href="#" class="choice-btn" onclick="hyoji2(3)">
                                                         {!! $categories[2]->font_awesome_html !!} {{ $categories[2]->name }}
                                                     </a>
-                                                    <a href="#" class="choice-btn" onclick="hyoji1(4)">
+                                                    <a href="#" class="choice-btn" onclick="hyoji2(4)">
                                                         <i class="fas fa-car"></i> 移動
                                                     </a>
                                                 </div>
@@ -227,87 +217,36 @@
         (window.onload = function() {
             let spots = {!! $spots !!};
 
-        if(spots) {
+            let own = new Array();
 
-                let s = '';
-                sorting();
+        if(spots) {
 
                 for (let i = 0; i < spots.length; i++) {
 
-                    let year = 2018;
-                    let month = 8;
-                    let day = 31;
-                    let firsthour = spots[i]['started_hour_at'];
-                    let firstminute = spots[i]['started_minute_at'];
-                    let finishhour = spots[i]['finished_hour_at'];
-                    let finishminute = spots[i]['finished_minute_at'];
+                    own.push({
+                        "first_hour": spots[i]['started_hour_at'],
+                        "text": spots[i]['name'],
+                        "first_minute": spots[i]['started_minute_at'],
+                        "finish_hour": spots[i]['finished_hour_at'],
+                        "finish_minute": spots[i]['finished_minute_at'],
+                        "icon": spots[i]['icon'],
+                        "url": spots[i]['url'],
+                    });
 
-                    let firstdt = new Date(year, month, day, firsthour, firstminute);
-                    let finishdt = new Date(year, month, day, finishhour, finishminute);
-
-                    let outHour = firstdt.getHours();
-                    let outMinute = firstdt.getMinutes();
-                    let autHour = finishdt.getHours();
-                    let autMinute = finishdt.getMinutes();
-
-                    outHour = ('0' + outHour).slice(-2);
-                    outMinute = ('0' + outMinute).slice(-2);
-                    autHour = ('0' + autHour).slice(-2);
-                    autMinute = ('0' + autMinute).slice(-2);
-
-                    // datetime型
-
-                    if (i > 0) {
-                        s += '<div class="text-muted">\n' +
-                            '                                <h5>↓</h5>\n' +
-                            '                            </div>\n';
-                    }
-                    s += '<div class="media text-muted pt-3">\n' +
-                        '                                <div class="small">\n' +
-                        '                                <div>\n' +
-                        '                                    <strong class="time-time">' + outHour + ':' + outMinute + ' - ' + autHour + ':' + autMinute + '</strong>\n' +
-                        '</div>\n' +
-                        '                                </div>\n' +
-                        '                                <div class="media-body pb-3 border-bottom">\n' +
-                        '                                    <div class="d-flex justify-content-between">';
-                    if (spots[i]['icon'] == '<i class="far fa-star icon-back"></i>') {
-                        s += '<strong class="text-gray-dark">' + spots[i]['icon'] + ' ' + spots[i]['name'] + '</strong>';
-                    } else {
-                        s += '<strong class="text-gray-dark">' + spots[i]['icon'] + ' ' + spots[i]['name'] + '<a href="' + spots[i]['url'] + '" target="_blank">(詳細)</a></strong>';
-                    }
-                    s +='                                        <div class="update-del">\n' +
-                        '                                        <button type="button" onclick="deleteValue(' + i + ')">削除</button>\n' +
-                        '                                        </div>\n' +
-                        '                                    </div>\n' +
-                        '                                </div>\n' +
-                        '                            </div>';
                 }
-                document.getElementById("sort-time-ryotei").innerHTML = s;
+                        localStorage.setItem("yotei" , JSON.stringify(own));
 
-        }
-
-
-        function sorting() {
-
-            spots.sort(function (a, b) {
-                return a.started_hour_at - b.started_hour_at;
-            });
-
-            for(let i = 0; i < spots.length; i++) {
-                spots[i] = JSON.stringify(spots[i]);
-            }
-
-            for(i = 0; i < spots.length; i++) {
-                spots[i] = JSON.parse(spots[i]);
-            }
         }
 
         })();
-
 
 
     </script>
 
 
 
+@endsection
+
+@section('script')
+    <script type="text/javascript" src="{{ asset('./js/update.js') }}"></script>
 @endsection

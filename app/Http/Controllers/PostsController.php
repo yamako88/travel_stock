@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostCreate;
+use App\Http\Requests\PostUpdate;
 use App\Models\Post;
 use App\Models\Spot;
 use App\Models\SpotsCategory;
@@ -106,12 +107,67 @@ class PostsController extends Controller
      * @param $post
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function update($post)
+    public function edit($post)
     {
         $posts = Post::find($post);
         $spots = Spot::where('post_id',$post)->get();
         $categories = SpotsCategory::all();
         return view('postupdate', compact('posts','categories','spots'));
+    }
+
+    /**
+     * @param $postid
+     * @param PostUpdate $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update($postid, PostUpdate $request)
+    {
+        DB::beginTransaction();
+        try{
+            $post = Post::find($postid);
+
+            $post->title = $request->title;
+            $post->comment = $request->comment;
+            $post->like_count = null;
+            $post->is_public = null;
+            $post->save();
+
+            Spot::where('post_id', $postid)->delete();
+
+            foreach ($request->yotei as $yotei){
+                $spot = new Spot;
+                $spot->name = $yotei['text'];
+                if(isset($yotei['url'])){
+                    $spot->url = $yotei['url'];
+                }
+                $spot->started_hour_at = $yotei['first_hour'];
+                $spot->started_minute_at = $yotei['first_minute'];
+                $spot->finished_hour_at = $yotei['finish_hour'];
+                $spot->finished_minute_at = $yotei['finish_minute'];
+                $spot->spot_category_id = null;
+                $spot->day = null;
+                $spot->post_id = $postid;
+                $spot->icon = $yotei['icon'];
+                $spot->save();
+            }
+
+            DB::commit();
+        } catch (\Exception $exception) {
+            // エラーログ出力
+            Log::error('旅程の保存処理に失敗しました',
+                [
+                    'exception' => $exception->getMessage(),
+                    'file' => $exception->getFile(),
+                    'method' => __FUNCTION__,
+                    'line' => $exception->getLine()
+                ]);
+
+            DB::rollBack();
+
+            return redirect()->route('home')->withErrors('旅程の保存に失敗しました');
+        }
+
+        return redirect('home')->with('success', '旅程の保存に成功しました');
     }
 
 }
