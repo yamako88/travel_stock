@@ -34,22 +34,23 @@
                         </div>
                     </div>
 
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item not-del">
-                        <a class="nav-link active lists" id="home1-tab" data-toggle="tab" data-day="1" href="#home1" role="tab" aria-controls="home" aria-selected="true">1日目</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link add-date" id="contact-tab" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false" onclick="addDate()">＋</a>
-                    </li>
-                </ul>
-                <ul></ul>
+                {{--日数の追加・削除--}}
+                {{--<ul class="nav nav-tabs" id="myTab" role="tablist">--}}
+                    {{--<li class="nav-item not-del">--}}
+                        {{--<a class="nav-link active lists" id="home1-tab" data-toggle="tab" data-day="1" href="#home1" role="tab" aria-controls="home" aria-selected="true">1日目</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="nav-item">--}}
+                        {{--<a class="nav-link add-date" id="contact-tab" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false" onclick="addDate()">＋</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+                {{--<ul></ul>--}}
 
                 <div class="tab-content days-ryotei" id="myTabContent">
 
                     {{--1日目 旅程リスト 開始--}}
                     <div class="tab-pane fade show active tab-day" id="home1" role="tabpanel" aria-labelledby="home1-tab">
                         <div class="my-3 p-3 bg-white rounded shadow-sm">
-                            <h6 class="border-bottom border-gray pb-2 mb-0">1日目</h6>
+                            <h6 class="border-bottom border-gray pb-2 mb-0">旅程リスト</h6>
 
                             {{--追加される旅程--}}
                             <div id="sort-time-ryotei">
@@ -168,16 +169,16 @@
                                             </div>
 
                                             <div class="choices" id="choice2">
-                                                <a href="#" class="choice-btn" onclick="hyoji1(1)">
+                                                <a class="none-btn">
                                                     {!! $categories[0]->font_awesome_html !!} {{ $categories[0]->name }}
                                                 </a>
                                                 <a href="#" class="choice-btn" onclick="hyoji1(2)">
                                                     {!! $categories[1]->font_awesome_html !!} {{ $categories[1]->name }}
                                                 </a>
-                                                <a href="#" class="choice-btn" onclick="hyoji1(3)">
+                                                <a class="none-btn">
                                                     {!! $categories[2]->font_awesome_html !!} {{ $categories[2]->name }}
                                                 </a>
-                                                <a href="#" class="choice-btn" onclick="hyoji1(4)">
+                                                <a class="none-btn">
                                                     <i class="fas fa-car"></i> 移動
                                                 </a>
                                             </div>

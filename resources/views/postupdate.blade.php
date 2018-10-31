@@ -161,16 +161,16 @@
                                                 </div>
 
                                                 <div class="choices" id="choice2">
-                                                    <a href="#" class="choice-btn" onclick="hyoji2(1)">
+                                                    <a class="none-btn">
                                                         {!! $categories[0]->font_awesome_html !!} {{ $categories[0]->name }}
                                                     </a>
                                                     <a href="#" class="choice-btn" onclick="hyoji2(2)">
                                                         {!! $categories[1]->font_awesome_html !!} {{ $categories[1]->name }}
                                                     </a>
-                                                    <a href="#" class="choice-btn" onclick="hyoji2(3)">
+                                                    <a class="none-btn">
                                                         {!! $categories[2]->font_awesome_html !!} {{ $categories[2]->name }}
                                                     </a>
-                                                    <a href="#" class="choice-btn" onclick="hyoji2(4)">
+                                                    <a class="none-btn">
                                                         <i class="fas fa-car"></i> 移動
                                                     </a>
                                                 </div>
