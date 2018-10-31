@@ -434,7 +434,7 @@ $(function () {
         })
             .done(function(){ //ajaxの通信に成功した場合
                 window.location.href = "../home";
-                alert("新しく旅程を登録しました！");
+                alert("編集した旅程を保存しました！");
             })
             .fail(function(data){ //ajaxの通信に失敗した場合
 

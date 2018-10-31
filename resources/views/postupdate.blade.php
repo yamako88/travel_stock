@@ -210,20 +210,17 @@
         </div>
     </main>
 
-
-
     <script type="text/javascript">
-
         (window.onload = function() {
             let spots = {!! $spots !!};
 
-            let own = new Array();
-
         if(spots) {
+
+            let tmp = new Array();
 
                 for (let i = 0; i < spots.length; i++) {
 
-                    own.push({
+                    tmp.push({
                         "first_hour": spots[i]['started_hour_at'],
                         "text": spots[i]['name'],
                         "first_minute": spots[i]['started_minute_at'],
@@ -234,16 +231,10 @@
                     });
 
                 }
-                        localStorage.setItem("yotei" , JSON.stringify(own));
-
+                        localStorage.setItem("yotei" , JSON.stringify(tmp));
         }
-
         })();
-
-
     </script>
-
-
 
 @endsection
 
