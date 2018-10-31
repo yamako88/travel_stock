@@ -100,7 +100,7 @@
                                                                 <button id="submit" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
                                                             </div>
                                                             <div id="search-word-food"></div>
-                                                            <table id="table" border="1">
+                                                            <table id="table" border="1" style="width: 750px;">
                                                             </table>
                                                             <div id="pageing"></div>
                                                         </div>
