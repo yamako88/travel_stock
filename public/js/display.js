@@ -20,9 +20,8 @@ $("#delete-ls").on("click", function () {
     localStorage.clear();
 });
 
-
-// モーダルの表示・非表示
-function display1(num)
+// モーダルはbootstrapを使用している
+function displayTransitionsInModal(num)
 {
     if (num === 0)
     {

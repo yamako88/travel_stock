@@ -17,8 +17,8 @@ $(function(){
 });
 
 
-// モーダルの表示・非表示
-function display2(num)
+// モーダルはbootstrapを使用している
+function displayTransitionsInModal(num)
 {
     if (num === 0)
     {

@@ -56,7 +56,7 @@
                             <div id="sort-time-ryotei">
                             </div>
                             <div class="pt-3 one-add">
-                                <button type="button" class="btn square_btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="display1(0)">＋ 予定の追加</button>
+                                <button type="button" class="btn square_btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="displayTransitionsInModal(0)">＋ 予定の追加</button>
                             </div>
 
 
@@ -72,7 +72,7 @@
 
                                             {{--共通モーダル　タイトル--}}
                                             <div class="modal-header">
-                                                <a href="#" class="square-btn-back" id="modoru" onclick="hyoji1(0)">
+                                                <a href="#" class="square-btn-back" id="modoru" onclick="displayTransitionsInModal(0)">
                                                     <i class="fas fa-angle-left"></i> 戻る
                                                 </a>
                                                 <h5 class="modal-title" id="choice">予定の追加</h5>
@@ -172,7 +172,7 @@
                                                 <a class="none-btn">
                                                     {!! $categories[0]->font_awesome_html !!} {{ $categories[0]->name }}
                                                 </a>
-                                                <a href="#" class="choice-btn" onclick="display1(2)">
+                                                <a href="#" class="choice-btn" onclick="displayTransitionsInModal(2)">
                                                     {!! $categories[1]->font_awesome_html !!} {{ $categories[1]->name }}
                                                 </a>
                                                 <a class="none-btn">
