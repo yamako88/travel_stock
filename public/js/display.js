@@ -200,8 +200,11 @@ if (localStorage.getItem('comment')){
 
 $(function() {
     (function autoSave() {
-        localStorage.setItem('myTab', $('#myTab')[0].innerHTML);
-        localStorage.setItem('myTabContent', $('#myTabContent')[0].innerHTML);
+        // 日数の追加をローカルストレージに保存
+        // localStorage.setItem('myTab', $('#myTab')[0].innerHTML);
+        // localStorage.setItem('myTabContent', $('#myTabContent')[0].innerHTML);
+
+        // タイトルとコメントをローカルストレージに保存
         localStorage.setItem('title', $('#title').val());
         localStorage.setItem('comment', $('#comment').val());
         setTimeout(autoSave, 1000);
