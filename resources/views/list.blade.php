@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="yokomigi">
-                    <a class="btn btn-lg btn-primary btn-block plan-create yoko-left" href="{{ url('update/'.$posts->id) }}">編集</a>
+                    <a onclick="localStorage.clear();" class="btn btn-lg btn-primary btn-block plan-create yoko-left" href="{{ url('edit/'.$posts->id) }}">編集</a>
                 </div>
                 <div class="yokohidari">
                 <a class="btn btn-lg btn-primary btn-block plan-create yoko-right" href="{{ url('delete/'.$posts->id) }}" onclick='return confirm("削除します。よろしいですか？");'>削除</a>
@@ -130,8 +130,11 @@
 
         })();
 
-
     </script>
 
 
+@endsection
+
+@section('script')
+    <script type="text/javascript" src="{{ asset('./js/update.js') }}"></script>
 @endsection
