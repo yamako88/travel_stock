@@ -9,7 +9,7 @@
     <main role="main" class="container">
 
         <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
-            <img class="mr-3" src="{{ asset('./list_bootstrap_sample_files/bootstrap-outline.svg') }}" alt="" width="48" height="48">
+            <img class="mr-3" src="{{ asset('./image/31102018073555A.png') }}" alt="" width="" height="48">
             <div class="lh-100">
                 <h4 class="mb-0 text-white lh-100">旅程作成</h4>
 

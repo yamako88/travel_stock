@@ -200,8 +200,11 @@ if (localStorage.getItem('comment')){
 
 $(function() {
     (function autoSave() {
-        localStorage.setItem('myTab', $('#myTab')[0].innerHTML);
-        localStorage.setItem('myTabContent', $('#myTabContent')[0].innerHTML);
+        // 日数の追加をローカルストレージに保存
+        // localStorage.setItem('myTab', $('#myTab')[0].innerHTML);
+        // localStorage.setItem('myTabContent', $('#myTabContent')[0].innerHTML);
+
+        // タイトルとコメントをローカルストレージに保存
         localStorage.setItem('title', $('#title').val());
         localStorage.setItem('comment', $('#comment').val());
         setTimeout(autoSave, 1000);
@@ -349,8 +352,12 @@ function showResult(result,foodwords) {
 
     $("#search-word-food").append("<h6 class='food-list'>全" + result.total_hit_count + "件　検索ワード：<span id='foodwords'>" + foodwords + "</span></h6>");
     $("#table").append("<tr class='food-list'><th>店舗名</th><th>住所</th><th>詳細</th><th>登録する</th>");
-    for ( let i in result.rest ) {
-        $("#table").append("<tr class='food-list'><td id='food-name" + i + "'>" + result.rest[i].name + "</td><td id='food-adress" + i + "'>" + result.rest[i].address + "</td><td><a href='" + result.rest[i].url + "' target='_blank'>詳細</a></td><td><button data-dismiss='modal' onClick='foodList(" + i + ")'>登録</button></td></tr>" );
+    if (Array.isArray(result.rest)) {
+        for ( let i in result.rest ) {
+            $("#table").append("<tr class='food-list'><td id='food-name" + i + "'>" + result.rest[i].name + "</td><td id='food-adress" + i + "'>" + result.rest[i].address + "</td><td><a href='" + result.rest[i].url + "' target='_blank'>詳細</a></td><td><button data-dismiss='modal' onClick='foodList(" + i + ")'>登録</button></td></tr>" );
+        }
+    }else{
+        $("#table").append("<tr class='food-list'><td id='food-name0'>" + result.rest.name + "</td><td id='food-adress0'>" + result.rest.address + "</td><td><a href='" + result.rest.url + "' target='_blank'>詳細</a></td><td><button data-dismiss='modal' onClick='foodList(0)'>登録</button></td></tr>" );
     }
 
     if (result.page_offset == 1 && allHit == 1) {

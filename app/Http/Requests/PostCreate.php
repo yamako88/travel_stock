@@ -26,10 +26,8 @@ class PostCreate extends FormRequest
      */
     public function rules()
     {
-        $users = Auth::user();
-
         return [
-            'title' => 'required|string|max:100|unique:posts,title,'.$users->id.',user_id',
+            'title' => 'required|string|max:100',
             'comment' => 'required|string|max:400',
             'yotei' => 'required',
         ];
