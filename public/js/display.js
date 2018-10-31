@@ -22,9 +22,9 @@ $("#delete-ls").on("click", function () {
 
 
 // モーダルの表示・非表示
-function hyoji1(num)
+function display1(num)
 {
-    if (num == 0)
+    if (num === 0)
     {
         $('#modalArea').fadeIn();
         document.getElementById("free-str").value = "";
@@ -42,7 +42,7 @@ function hyoji1(num)
         document.getElementById("stay1").style.display="none";
         document.getElementById("move1").style.display="none";
     }
-    else if (num == 1)
+    else if (num === 1)
     {
         aboutTime();
         document.getElementById("choice").style.display="none";
@@ -53,7 +53,7 @@ function hyoji1(num)
         document.getElementById("modoru").style.display="block";
         document.getElementById("spot1").style.display="block";
     }
-    else if (num == 2)
+    else if (num === 2)
     {
         aboutTime();
         document.getElementById("key").value = "";
@@ -69,7 +69,7 @@ function hyoji1(num)
         document.getElementById("modoru").style.display="block";
         $('.food-list').remove();
     }
-    else if (num == 3)
+    else if (num === 3)
     {
         aboutTime();
         document.getElementById("choice").style.display="none";
@@ -83,7 +83,7 @@ function hyoji1(num)
         document.getElementById("modoru").style.display="block";
         document.getElementById("stay1").style.display="block";
     }
-    else if (num == 4)
+    else if (num === 4)
     {
         aboutTime();
         document.getElementById("choice").style.display="none";
@@ -97,7 +97,7 @@ function hyoji1(num)
         document.getElementById("modoru").style.display="block";
         document.getElementById("move1").style.display="block";
     }
-    else if (num == 5)
+    else if (num === 5)
     {
         document.getElementById("choice").style.display="none";
         document.getElementById("choice1").style.display="none";

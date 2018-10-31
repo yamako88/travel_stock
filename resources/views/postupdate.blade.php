@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="pt-3 one-add">
-                                <button type="button" class="btn square_btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="hyoji2(0)">＋ 予定の追加</button>
+                                <button type="button" class="btn square_btn" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="display2(0)">＋ 予定の追加</button>
                             </div>
 
                             <div class="pt-3 one-add">
@@ -164,7 +164,7 @@
                                                     <a class="none-btn">
                                                         {!! $categories[0]->font_awesome_html !!} {{ $categories[0]->name }}
                                                     </a>
-                                                    <a href="#" class="choice-btn" onclick="hyoji2(2)">
+                                                    <a href="#" class="choice-btn" onclick="display2(2)">
                                                         {!! $categories[1]->font_awesome_html !!} {{ $categories[1]->name }}
                                                     </a>
                                                     <a class="none-btn">
