@@ -39,7 +39,8 @@
 </header>
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-    <a class="navbar-brand mr-auto mr-lg-0" href="{{ url('home') }}">旅程ストック</a>
+
+    <a class="navbar-brand mr-auto mr-lg-0" href="{{ url('home') }}"><img class="" src="{{ asset('./image/31102018073555A.png') }}" alt="" height="30" style="margin-right: 6px;">たびすと</a>
     <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -80,11 +81,7 @@
 
 <footer class="text-muted">
     <div class="container">
-        <p class="float-right">
-            <a href="http://getbootstrap.com/docs/4.1/examples/album/#">Back to top</a>
-        </p>
-        <p>Album example is © Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="http://getbootstrap.com/docs/4.1/">Visit the homepage</a> or read our <a href="http://getbootstrap.com/docs/4.1/getting-started/">getting started guide</a>.</p>
+        <p class="mt-5 mb-3 text-muted" style="text-align: center;">© copyright ©2018 travel_stock</p>
     </div>
 </footer>
 

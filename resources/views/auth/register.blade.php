@@ -19,7 +19,7 @@
 <body class="text-center">
 <form class="form-signin" method="POST" action="{{ route('register') }}">
     {{ csrf_field() }}
-    {{--<img class="mb-4" src="./login_bootstrap_sample_files/bootstrap-solid.svg" alt="" width="72" height="72">--}}
+    <img class="mb-4" src="./image/31102018071412A.png" alt="" width="300" height="260">
     <h1 class="h3 mb-3 font-weight-normal">新規登録</h1>
     <label for="name" class="sr-only">ユーザー名</label>
     <input type="text" name="name" id="inputEmail" class="form-control" placeholder="ユーザー名" autofocus="">
@@ -50,7 +50,7 @@
     @endif
     <button class="btn btn-lg btn-primary btn-block" type="submit">新規登録</button>
     <p class="in-up"><a href="{{ route('login') }}" class="in-up">ログインする</a></p>
-    <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    <p class="mt-5 mb-3 text-muted">© copyright ©2018 travel_stock</p>
 </form>
 
 </body>
